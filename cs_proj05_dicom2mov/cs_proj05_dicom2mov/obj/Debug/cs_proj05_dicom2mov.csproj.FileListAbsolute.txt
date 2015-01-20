@@ -1,0 +1,9 @@
+c:\users\sleepingkirby\documents\visual studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe.config
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Form1.resources
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Properties.Resources.resources
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csproj.GenerateResource.Cache
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.exe
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csprojResolveAssemblyReference.cache
