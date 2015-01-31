@@ -12,9 +12,11 @@ namespace cs_proj05_dicom2mov
 {
     public partial class Form1 : Form
     {
-        public Form1()
+
+        public Form1(int x=900, int y=510)
         {
             InitializeComponent();
+            this.Size = new Size(x, y);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

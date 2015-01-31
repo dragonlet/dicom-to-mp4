@@ -1,0 +1,7 @@
+diff a/cs_proj05_dicom2mov/cs_proj05_dicom2mov/sys.cs b/cs_proj05_dicom2mov/cs_proj05_dicom2mov/sys.cs	(rejected hunks)
+@@ -1,4 +0,4 @@
+-﻿using System;
++using System;
+ using System.Collections.Generic;
+ using System.Linq;
+ using System.Text;
