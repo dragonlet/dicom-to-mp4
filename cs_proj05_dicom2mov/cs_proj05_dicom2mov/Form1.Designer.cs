@@ -64,17 +64,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 471);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // selectListDicom
             // 
             this.selectListDicom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectListDicom.FormattingEnabled = true;
-            this.selectListDicom.Items.AddRange(new object[] {
-            "test",
-            "test1",
-            "test2",
-            "test3"});
             this.selectListDicom.Location = new System.Drawing.Point(3, 3);
             this.selectListDicom.Name = "selectListDicom";
             this.tableLayoutPanel1.SetRowSpan(this.selectListDicom, 3);
@@ -112,6 +106,7 @@
             this.buttonConvert.TabIndex = 0;
             this.buttonConvert.Text = "Convert -->";
             this.buttonConvert.UseVisualStyleBackColor = true;
+            this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
             // 
             // checklistMovieFiles
             // 
@@ -141,6 +136,7 @@
             this.buttonMoveTo.TabIndex = 5;
             this.buttonMoveTo.Text = "Move to -->";
             this.buttonMoveTo.UseVisualStyleBackColor = true;
+            this.buttonMoveTo.Click += new System.EventHandler(this.buttonMoveTo_Click);
             // 
             // FileNavigator
             // 

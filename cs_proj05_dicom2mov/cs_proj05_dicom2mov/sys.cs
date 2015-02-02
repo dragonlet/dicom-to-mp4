@@ -9,7 +9,7 @@ namespace cs_proj05_dicom2mov
 {
     class sys
     {
-        public string[] getFiles(string dir)
+        public static string[] getFiles(string dir)
         {
             if (dir=="")
             {

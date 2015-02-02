@@ -16,3 +16,12 @@ C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dico
 C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Form1.resources
 C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Properties.Resources.resources
 C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csproj.GenerateResource.Cache
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe.config
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.exe
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csprojResolveAssemblyReference.cache
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Form1.resources
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Properties.Resources.resources
+C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csproj.GenerateResource.Cache
