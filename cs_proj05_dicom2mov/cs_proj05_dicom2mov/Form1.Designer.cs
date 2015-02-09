@@ -37,6 +37,7 @@
             this.flowlayoutMoveButton = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonMoveTo = new System.Windows.Forms.Button();
             this.FileNavigator = new System.Windows.Forms.ListView();
+            this.moveToPath = new System.Windows.Forms.FolderBrowserDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelConvertButton.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // selectListDicom
             // 
+            this.selectListDicom.CheckOnClick = true;
             this.selectListDicom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectListDicom.FormattingEnabled = true;
             this.selectListDicom.Location = new System.Drawing.Point(3, 3);
@@ -148,6 +150,10 @@
             this.FileNavigator.TabIndex = 5;
             this.FileNavigator.UseCompatibleStateImageBehavior = false;
             // 
+            // moveToPath
+            // 
+            this.moveToPath.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,6 +180,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowlayoutMoveButton;
         private System.Windows.Forms.Button buttonMoveTo;
         private System.Windows.Forms.ListView FileNavigator;
+        private System.Windows.Forms.FolderBrowserDialog moveToPath;
     }
 }
 
