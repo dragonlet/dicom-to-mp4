@@ -11,58 +11,107 @@ namespace cs_proj05_dicom2mov
     {
         public static string cwd; //current working directory.
         public static string presetPath; //path to hold presets.
-        public static List<string> noDelList; //array for where deleteion cannot happen from.
+        public static List<string> noDelList= new List<string>(); //array for where deleteion cannot happen from.
 
-        public static bool getPresets(string fpath)
+        static sys()
+        {
+            readProgConf();
+        }
+
+        public static string getPresets(string fpath)
         {
             if (fpath == "")
             {
-                fpath = presetPath;
+                return "";
             }
 
+            string rtrnstr = "";
+            string[] stringTo = new string[2];
+            char[] delimitChar = new char[] { '=' };
+            stringTo[0] = "size";//currenty_directory=
+            stringTo[1] = "format";
 
+            string fileloc = Environment.ExpandEnvironmentVariables(fpath);
 
-            return false;
-        }
-
-
-        public static bool readProgConf(string fileloc = "%APPDATA%\\dicom2mov\\conf.ini")
-        {
-            
-            string[] stringTo={};
-            char delimitChar='=';
-            stringTo[0]="current_directory";//currenty_directory=
-            stringTo[1]="preset_path";
-            stringTo[2]="no_delete_path";
-
-
-            int i=0;
+            int i = 0;
 
             foreach (string line in File.ReadLines(fileloc))
             {
-                if(line.Contains(stringTo[i])){
-                    string[] tempArr=line.Split(delimitChar);
+                i = 0;
+                while (i < stringTo.Length)
+                {
 
-                    switch (i)
+                    if (line.Contains(stringTo[i]))
                     {
-                        case 0:
-                            cwd = tempArr[1];
-                            break;
-                        case 1:
-                            presetPath = tempArr[1];
-                            break;
-                        case 2:
-                            if (tempArr[1] != "") {
-                                noDelList.Add(tempArr[1]);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
 
+                        string[] tempArr = line.Split(delimitChar);
+
+                        switch (i)
+                        {
+                            case 0:
+                                rtrnstr = rtrnstr + "-s " + tempArr[1] + " ";
+                                break;
+                            case 1:
+                                rtrnstr = rtrnstr + "-f " + tempArr[1] + " ";
+                                break;
+                            default:
+                                break;
+                        }
+
+                    }
+                    i++;
                 }
-                i++;
             }
+            return rtrnstr;
+        }
+
+
+        public static bool readProgConf(string filepath = "%APPDATA%\\dicom2mov\\conf.ini")
+        {
+            
+            string[] stringTo= new string[3];
+            char[] delimitChar= new char[]{'='};
+            stringTo[0]="current_directory";//currenty_directory=
+            stringTo[1]="preset_path";
+            stringTo[2]="no_delete_path";
+            string fileloc = Environment.ExpandEnvironmentVariables(filepath);
+
+            int i=0;
+            
+            foreach (string line in File.ReadLines(fileloc))
+            {
+                i = 0;
+                while(i<stringTo.Length)
+                {
+                    
+                    if (line.Contains(stringTo[i]))
+                    {
+                        
+                        string[] tempArr=line.Split(delimitChar);
+
+                            switch (i)
+                            {
+                                case 0:
+                                    cwd = tempArr[1];
+                                    break;
+                                case 1:
+                                    presetPath = tempArr[1];
+                                    break;
+                                case 2:
+                                    if (tempArr[1] != "") {
+                                        noDelList.Add(tempArr[1]);
+                                        
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+                    
+                    }
+                    i++;
+                }      
+            }
+
             return false;
         }
 
@@ -79,35 +128,25 @@ namespace cs_proj05_dicom2mov
 
         public static bool deleteFiles(string fname)
         {
-            if (noDelList.Any(fname.Contains))
-            {
-                return false;
-            }
 
+            foreach (string tmpStr in noDelList)
+            {
+                string evalStr = Environment.ExpandEnvironmentVariables(tmpStr);
+                if (fname.Contains(evalStr))
+                {
+                    return false;
+                }
+            }
+            
 
             File.Delete(fname);
             return true;
         }
 
-        public static bool copyFiles(string from, string to, bool overwrite=false)
+        public static bool copyFiles(string from, string to, bool overwrite=true)
         {
-            string errstr = "";
-            if (!File.Exists(from))
-            {
-                errstr += " sys:copyFiles Error: from file \"" + from + "\" doesn't exist. ";
-            }
-            if (!File.Exists(to))
-            {
-                errstr += " sys:copyFiles Error: to file \"" + to + "\" doesn't exist. ";
-            }
-
-            if (errstr!="")
-            {
-                return false;
-            }
-
-            File.Copy(from, to, overwrite);
-
+            
+                File.Copy(from, to, overwrite);
             return true;
         }
 
