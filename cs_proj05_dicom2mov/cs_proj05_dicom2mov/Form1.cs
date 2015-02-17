@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace cs_proj05_dicom2mov
 {
     public partial class Form1 : Form
     {
 
-        public Form1(int x=900, int y=510)
+        public Form1(int x = 900, int y = 510)
         {
             InitializeComponent();
             this.Size = new Size(x, y);
@@ -24,28 +25,42 @@ namespace cs_proj05_dicom2mov
 
         private void initDicomList()
         {
-            /*
-             * foreach (string file in gui.displayDicomFiles())
-             * {
-             *      selectListDicom.Items.Add(file);
-             * }
-             */
+            //At the moment this function only uses the current directory. Once we get reading in presets from the conf sorted out, 
+            //replace Directory.GetCurrentDirectory() with the path variable.
 
-            //for now adding fake items
-            selectListDicom.Items.Add("fakeDicom.dcm");
+            string[] dcmList = gui.getDicomFiles(sys.dicomsPath);
+            if (dcmList.Length > 0)
+            {
+                foreach (string file in dcmList)
+                {
+                    selectListDicom.Items.Add(file);
+                }
+            }
+            else
+            {
+                //for now adding fake items. In the future some sort of non-checkable error message needs to be displayed.
+                selectListDicom.Items.Add("fakeDicom.dcm");
+            }
         }
 
         private void initMovList()
         {
-            /*
-             * foreach (string file in gui.displayMovFiles())
-             * {
-             *      checklistMovieFiles.Items.Add(file);
-             * }
-             */
-
-            //For now, adding fake items.
-            checklistMovieFiles.Items.Add("fakeMov.mov");
+            //This only currently checks for mp4 files, pending full list of possible extensions.
+            //At the moment this function only uses the current directory. Once we get reading in presets from the conf sorted out, 
+            //replace Directory.GetCurrentDirectory() with the path variable.
+            string[] movList = gui.getMovFiles(sys.outPath);
+            if (movList.Length > 0)
+            {
+                foreach (string file in movList)
+                {
+                    checklistMovieFiles.Items.Add(file);
+                }
+            }
+            else
+            {
+                //For now, adding fake items.
+                checklistMovieFiles.Items.Add("fakeMov.mp4");
+            }
         }
 
         private void initProfileList()
@@ -55,7 +70,8 @@ namespace cs_proj05_dicom2mov
 
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
-            // I don't know if this opens a browse type menu (which might be a good idea) or what.
+            //Currently opens a browse menu, and does nothing afterwards. Pending discussion.
+            DialogResult result = moveToPath.ShowDialog();
         }
 
         private void buttonConvert_Click(object sender, EventArgs e)

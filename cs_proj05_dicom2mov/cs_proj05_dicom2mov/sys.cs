@@ -14,6 +14,7 @@ namespace cs_proj05_dicom2mov
         public static List<string> noDelList= new List<string>(); //array for where deleteion cannot happen from.
         public static string stillsPath;
         public static string outPath;
+        public static string dicomsPath;
 
         static sys()
         {
@@ -40,7 +41,7 @@ namespace cs_proj05_dicom2mov
             }
             catch (Exception errStr)
             {
-                popup.msg(errStr.Message);
+                popup.msg("sys.getPresets had an error trying to open "+fileloc+"\n Returned error: "+errStr.Message);
                 return "";
             }
 
@@ -80,23 +81,24 @@ namespace cs_proj05_dicom2mov
         public static bool readProgConf(string filepath = "%APPDATA%\\dicom2mov\\conf.ini")
         {
             
-            string[] stringTo= new string[3];
+            string[] stringTo= new string[6];
             char[] delimitChar= new char[]{'='};
             stringTo[0]="current_directory";//currenty_directory=
             stringTo[1]="preset_path";
             stringTo[2]="no_delete_path";
             stringTo[3] = "stills_path";
             stringTo[4] = "out_path";
+            stringTo[5] = "dicoms_path";
+
 
             string fileloc = Environment.ExpandEnvironmentVariables(filepath);
-
             try
             {
                 File.ReadLines(fileloc);
             }
             catch (Exception errStr)
             {
-                popup.msg(errStr.Message);
+                popup.msg("sys.readProfConf had an error opening "+fileloc+". \nReturned error: "+errStr.Message);
                 return false;
             }
 
@@ -132,6 +134,9 @@ namespace cs_proj05_dicom2mov
                                 case 4:
                                     outPath=tempArr[1];
                                     break;
+                                case 5:
+                                    dicomsPath = tempArr[1];
+                                    break;
                                 default:
                                     break;
                             }
@@ -147,21 +152,22 @@ namespace cs_proj05_dicom2mov
 
         public static string[] getFiles(string dir)
         {
+            string dirpath = Environment.ExpandEnvironmentVariables(dir);
             if (dir=="")
             {
                 //stub for getting default directory.
             }
             try
             {
-                string[] testflist = Directory.GetFiles(dir);
+                string[] testflist = Directory.GetFiles(dirpath);
             }
             catch (Exception errStr)
             {
-                popup.msg(errStr.Message);
+                popup.msg("getFiles had an error getting files under: "+dirpath+"\n returned error: "+errStr.Message);
                 string[] emptyArr = new string[0];
                 return emptyArr;
             }
-            string[] flist = Directory.GetFiles(dir);
+            string[] flist = Directory.GetFiles(dirpath);
             return flist;
         } 
 
@@ -191,13 +197,16 @@ namespace cs_proj05_dicom2mov
 
         public static bool copyFiles(string from, string to, bool overwrite=true)
         {
+
+            string tof=Environment.ExpandEnvironmentVariables(to);
+            string fromf=Environment.ExpandEnvironmentVariables(from);
             try
             {
-                File.Copy(from, to, overwrite);
+                File.Copy(fromf, tof, overwrite);
             }
             catch (Exception errStr)
             {
-                popup.msg(errStr.Message);
+                popup.msg("copyFile reported an error trying to copy from "+fromf+" to "+tof+"\n returned error: "+errStr.Message);
                 return false;
             }
             return true;
