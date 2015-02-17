@@ -32,6 +32,15 @@ namespace cs_proj05_dicom2mov
             stringTo[1] = "format";
 
             string fileloc = Environment.ExpandEnvironmentVariables(fpath);
+            try
+            {
+                File.ReadLines(fileloc);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg(errStr.Message);
+                return "";
+            }
 
             int i = 0;
 
@@ -75,6 +84,16 @@ namespace cs_proj05_dicom2mov
             stringTo[1]="preset_path";
             stringTo[2]="no_delete_path";
             string fileloc = Environment.ExpandEnvironmentVariables(filepath);
+
+            try
+            {
+                File.ReadLines(fileloc);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg(errStr.Message);
+                return false;
+            }
 
             int i=0;
             
@@ -122,6 +141,16 @@ namespace cs_proj05_dicom2mov
             {
                 //stub for getting default directory.
             }
+            try
+            {
+                string[] testflist = Directory.GetFiles(dir);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg(errStr.Message);
+                string[] emptyArr = new string[0];
+                return emptyArr;
+            }
             string[] flist = Directory.GetFiles(dir);
             return flist;
         } 
@@ -134,19 +163,31 @@ namespace cs_proj05_dicom2mov
                 string evalStr = Environment.ExpandEnvironmentVariables(tmpStr);
                 if (fname.Contains(evalStr))
                 {
+                    popup.msg("Error deleting file: " + evalStr + "\nFile is in a location that should not be deleted.");
                     return false;
                 }
             }
-            
-
-            File.Delete(fname);
+            try
+            {
+                File.Delete(fname);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg(errStr.Message);
+            }
             return true;
         }
 
         public static bool copyFiles(string from, string to, bool overwrite=true)
         {
-            
+            try
+            {
                 File.Copy(from, to, overwrite);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg(errStr.Message);
+            }
             return true;
         }
 
