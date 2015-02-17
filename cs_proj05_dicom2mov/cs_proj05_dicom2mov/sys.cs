@@ -12,11 +12,8 @@ namespace cs_proj05_dicom2mov
         public static string cwd; //current working directory.
         public static string presetPath; //path to hold presets.
         public static List<string> noDelList= new List<string>(); //array for where deleteion cannot happen from.
-<<<<<<< HEAD
         public static string stillsPath;
         public static string outPath;
-=======
->>>>>>> sys_class
 
         static sys()
         {
@@ -88,11 +85,9 @@ namespace cs_proj05_dicom2mov
             stringTo[0]="current_directory";//currenty_directory=
             stringTo[1]="preset_path";
             stringTo[2]="no_delete_path";
-<<<<<<< HEAD
             stringTo[3] = "stills_path";
             stringTo[4] = "out_path";
-=======
->>>>>>> sys_class
+
             string fileloc = Environment.ExpandEnvironmentVariables(filepath);
 
             try
@@ -128,7 +123,6 @@ namespace cs_proj05_dicom2mov
                                     break;
                                 case 2:
                                     if (tempArr[1] != "") {
-<<<<<<< HEAD
                                         noDelList.Add(tempArr[1]);                                        
                                     }
                                     break;
@@ -138,12 +132,6 @@ namespace cs_proj05_dicom2mov
                                 case 4:
                                     outPath=tempArr[1];
                                     break;
-=======
-                                        noDelList.Add(tempArr[1]);
-                                        
-                                    }
-                                    break;
->>>>>>> sys_class
                                 default:
                                     break;
                             }
@@ -153,11 +141,7 @@ namespace cs_proj05_dicom2mov
                 }      
             }
 
-<<<<<<< HEAD
             return true;
-=======
-            return false;
->>>>>>> sys_class
         }
 
 
@@ -200,10 +184,7 @@ namespace cs_proj05_dicom2mov
             catch (Exception errStr)
             {
                 popup.msg(errStr.Message);
-<<<<<<< HEAD
                 return false;
-=======
->>>>>>> sys_class
             }
             return true;
         }
@@ -217,10 +198,7 @@ namespace cs_proj05_dicom2mov
             catch (Exception errStr)
             {
                 popup.msg(errStr.Message);
-<<<<<<< HEAD
                 return false;
-=======
->>>>>>> sys_class
             }
             return true;
         }
