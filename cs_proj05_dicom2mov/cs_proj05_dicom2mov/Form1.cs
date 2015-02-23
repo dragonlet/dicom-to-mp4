@@ -25,9 +25,6 @@ namespace cs_proj05_dicom2mov
 
         private void initDicomList()
         {
-            //At the moment this function only uses the current directory. Once we get reading in presets from the conf sorted out, 
-            //replace Directory.GetCurrentDirectory() with the path variable.
-
             string[] dcmList = gui.getDicomFiles(sys.dicomsPath);
             if (dcmList.Length > 0)
             {
@@ -38,16 +35,13 @@ namespace cs_proj05_dicom2mov
             }
             else
             {
-                //for now adding fake items. In the future some sort of non-checkable error message needs to be displayed.
-                selectListDicom.Items.Add("fakeDicom.dcm");
+                selectListDicom.Items.Add("No .dcm files found.");
+                selectListDicom.SelectionMode = SelectionMode.None;
             }
         }
 
         private void initMovList()
         {
-            //This only currently checks for mp4 files, pending full list of possible extensions.
-            //At the moment this function only uses the current directory. Once we get reading in presets from the conf sorted out, 
-            //replace Directory.GetCurrentDirectory() with the path variable.
             string[] movList = gui.getMovFiles(sys.outPath);
             if (movList.Length > 0)
             {
@@ -58,8 +52,8 @@ namespace cs_proj05_dicom2mov
             }
             else
             {
-                //For now, adding fake items.
-                checklistMovieFiles.Items.Add("fakeMov.mp4");
+                checklistMovieFiles.Items.Add("No valid movie files found.");
+                checklistMovieFiles.SelectionMode = SelectionMode.None;
             }
         }
 
