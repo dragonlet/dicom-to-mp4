@@ -31,3 +31,21 @@ C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov
 C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.xml
 C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.dll
 C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.xml
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe.config
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.exe
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.pdb
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.dll
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.Native.dll
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.Native64.dll
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NLog.dll
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.dll
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.pdb
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.xml
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NLog.xml
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.xml
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csprojResolveAssemblyReference.cache
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Form1.resources
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Properties.Resources.resources
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csproj.GenerateResource.Cache

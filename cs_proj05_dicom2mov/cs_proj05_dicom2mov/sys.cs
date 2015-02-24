@@ -118,24 +118,24 @@ namespace cs_proj05_dicom2mov
                             switch (i)
                             {
                                 case 0:
-                                    cwd = tempArr[1];
+                                    cwd = Environment.ExpandEnvironmentVariables(tempArr[1]);
                                     break;
                                 case 1:
-                                    presetPath = tempArr[1];
+                                    presetPath = Environment.ExpandEnvironmentVariables(tempArr[1]);
                                     break;
                                 case 2:
                                     if (tempArr[1] != "") {
-                                        noDelList.Add(tempArr[1]);                                        
+                                        noDelList.Add(Environment.ExpandEnvironmentVariables(tempArr[1]));                                        
                                     }
                                     break;
                                 case 3:
-                                    stillsPath=tempArr[1];
+                                    stillsPath=Environment.ExpandEnvironmentVariables(tempArr[1]);
                                     break;
                                 case 4:
-                                    outPath=tempArr[1];
+                                    outPath=Environment.ExpandEnvironmentVariables(tempArr[1]);
                                     break;
                                 case 5:
-                                    dicomsPath = tempArr[1];
+                                    dicomsPath = Environment.ExpandEnvironmentVariables(tempArr[1]);
                                     break;
                                 default:
                                     break;

@@ -61,9 +61,11 @@ namespace cs_proj05_dicom2mov
             return movFiles;
         }
 
-        public static bool convert(string[] files)
+        public static bool convert()
         {
             //Pending discussion on presets and conv.convert being set up.
+            conv.convert();
+            popup.msg("converting...converted!");
             return false;
         }
     }
