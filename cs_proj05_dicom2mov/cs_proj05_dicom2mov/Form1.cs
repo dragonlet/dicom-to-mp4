@@ -72,6 +72,7 @@ namespace cs_proj05_dicom2mov
         {
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             //gui.convert(selectListDicom.SelectedItems, dropdownProfiles.SelectedIndex);
+            gui.convert();
         }
     }
 }

@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dicom">
+      <HintPath>..\packages\fo-dicom.1.0.37\lib\net40\Dicom.dll</HintPath>
+    </Reference>
+    <Reference Include="Dicom.Native">
+      <HintPath>..\packages\fo-dicom.1.0.37\lib\net40\Dicom.Native.dll</HintPath>
+    </Reference>
+    <Reference Include="Dicom.Native64">
+      <HintPath>..\packages\fo-dicom.1.0.37\lib\net40\Dicom.Native64.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="NReco.VideoConverter">
       <HintPath>NReco.VideoConverter\NReco.VideoConverter.dll</HintPath>
     </Reference>
@@ -71,6 +83,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ChangeLog.md" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,9 +94,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
