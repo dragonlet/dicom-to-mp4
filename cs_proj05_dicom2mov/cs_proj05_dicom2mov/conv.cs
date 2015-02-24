@@ -49,7 +49,8 @@ namespace cs_proj05_dicom2mov
              */
 
             // just need to generalize the pathnames
-            ffMpeg.ConvertMedia(@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
+            ffMpeg.ConvertMedia(jpgTempDir + @"akfg%05d.png", "image2", outFile + @"test.mp4", "mp4", outS);
+                              //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
             return false;
         }
 
