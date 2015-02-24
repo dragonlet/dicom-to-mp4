@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>fo-dicom</id>
+    <version>1.0.37</version>
+    <title>Fellow Oak DICOM for .NET</title>
+    <authors>Colby Dillion</authors>
+    <owners>Colby Dillion</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/rcd/fo-dicom</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A DICOM library for .NET</description>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="NLog" />
+    </dependencies>
+  </metadata>
+</package>

@@ -31,3 +31,6 @@ C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov
 C:\Users\sleepingkirby\Documents\Visual Studio 2013\Projects\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.xml
 C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.dll
 C:\Users\twitt.PNWRF\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NReco.VideoConverter.xml
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\cs_proj05_dicom2mov.exe.config
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.exe
+C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.pdb
