@@ -22,14 +22,19 @@ namespace cs_proj05_dicom2mov
         // converts all dcm files in a directory to jpg
         public static void all_dcm_to_jpg(string dcmDir, string jpgTempDir)
         {
-            string[] files = sys.getFiles(dcmDir);
+            string[] files = sys.getFiles(dcmDir + @"DICOM\");
             string filename;
 
             foreach(string dcm in files) {
 
-                if (dcm.EndsWith(".dcm")) { // did not like finding OSX hidden file .DS_Store!
-                    filename = Path.GetFileNameWithoutExtension(dcm);
-                    dcm_to_jpg(dcm, jpgTempDir + filename + ".jpg");
+                filename = Path.GetFileNameWithoutExtension(dcm);
+
+                // first to check if files end with .dcm
+                // but apparently Philips doesn't use file extensions for their DICOM files?
+                // instead, each file starts with IM_ 
+                // (should probably make "IM_" prefix a defined const somewhere)
+                if (dcm.EndsWith(".dcm") || filename.StartsWith("IM_")) {
+                    dcm_to_jpg(dcm, jpgTempDir + filename + ".png");
                 }
                 
             }
@@ -49,19 +54,39 @@ namespace cs_proj05_dicom2mov
              * conv.convert(); in program to call.
              */
 
-            // just need to generalize the pathnames
-            ffMpeg.ConvertMedia(jpgTempDir + @"akfg%05d.png", "image2", outFile + @"test.mp4", "mp4", outS);
+            // just need to make this less hardcoded
+            ffMpeg.ConvertMedia(jpgTempDir + @"IM_%04d.png", "image2", outFile + @".mp4", "mp4", outS);
                               //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
             return false;
         }
 
         // conversion routine for one dicom dataset (one scan, one directory)
-        public static void convert()
+        // dicomScan should be a subdirectory in the sys.dicomsPath indicating 
+        // a specific scan or dataset
+        public static void convert(string dicomScan)
         {
-            // 'should' work, if extra path info is added to the dicomsPath..would be parameter passed in to convert()
-            // commented out to play with test pngs and video creation
-            //all_dcm_to_jpg(sys.dicomsPath, sys.stillsPath);
-            jpg_to_mp4(sys.stillsPath, sys.outPath);
+
+            // add \ at end of scan name
+            if (!dicomScan.EndsWith(@"\"))
+            {
+                dicomScan += @"\";
+            }
+
+            // check and create temp directory 
+            string tempScanDirectory = sys.stillsPath + dicomScan;
+            if (!Directory.Exists(tempScanDirectory))
+            {
+                Directory.CreateDirectory(tempScanDirectory);
+            }
+
+            // uses all defined paths + name of the dicom directory
+            all_dcm_to_jpg(sys.dicomsPath + dicomScan, tempScanDirectory);
+            jpg_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
+
+            // cleanup temp files
+            Directory.Delete(tempScanDirectory, true);
         }
+
+
     }
 }
