@@ -65,7 +65,8 @@ namespace cs_proj05_dicom2mov
         // each directory of .dcm files should be a different session or different scan
         public static bool convert()
         {
-            conv.convert();
+            // hardcoded test case for now
+            conv.convert("example dicom structure");
             popup.msg("converting...converted!");
             return true;
         }
