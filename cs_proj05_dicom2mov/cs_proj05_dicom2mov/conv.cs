@@ -12,14 +12,14 @@ namespace cs_proj05_dicom2mov
     class conv
     {
 
-        // extract jpg from a .dcm file
+        // extract one jpg from one .dcm file
         public static void dcm_to_jpg(string dcmFile, string jpgFile)
         {
             var image = new DicomImage(dcmFile);
             image.RenderImage().Save(jpgFile);
         }
 
-        // converts all dcm files in a directory to jpg,
+        // converts all dcm files in a directory to jpg
         public static void all_dcm_to_jpg(string dcmDir, string jpgTempDir)
         {
             string[] files = sys.getFiles(dcmDir);
@@ -35,6 +35,7 @@ namespace cs_proj05_dicom2mov
             }
         }
 
+        // convert directory of jpg images to mp4
         public static Boolean jpg_to_mp4(string jpgTempDir, string outFile)
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
@@ -54,7 +55,7 @@ namespace cs_proj05_dicom2mov
             return false;
         }
 
-        // overall conversion process
+        // conversion routine for one dicom dataset (one scan, one directory)
         public static void convert()
         {
             // 'should' work, if extra path info is added to the dicomsPath..would be parameter passed in to convert()
