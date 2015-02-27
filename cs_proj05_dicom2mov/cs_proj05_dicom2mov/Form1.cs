@@ -72,6 +72,9 @@ namespace cs_proj05_dicom2mov
         {
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             //gui.convert(selectListDicom.SelectedItems, dropdownProfiles.SelectedIndex);
+
+            // all parameters will be set in gui.convert()
+            // or does it need to happen here because of the way form list selection stuff works?
             gui.convert();
         }
     }

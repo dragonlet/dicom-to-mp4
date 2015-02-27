@@ -61,12 +61,13 @@ namespace cs_proj05_dicom2mov
             return movFiles;
         }
 
+        // gui.convert() should deal with looping through multiple dicom datasets
+        // each directory of .dcm files should be a different session or different scan
         public static bool convert()
         {
-            //Pending discussion on presets and conv.convert being set up.
             conv.convert();
             popup.msg("converting...converted!");
-            return false;
+            return true;
         }
     }
 }
