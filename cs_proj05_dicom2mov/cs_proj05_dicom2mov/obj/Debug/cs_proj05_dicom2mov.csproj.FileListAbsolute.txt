@@ -49,3 +49,10 @@ C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\
 C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Form1.resources
 C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.Properties.Resources.resources
 C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\obj\Debug\cs_proj05_dicom2mov.csproj.GenerateResource.Cache
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.dll
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.Native.dll
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.Native64.dll
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NLog.dll
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.pdb
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\Dicom.xml
+C:\Users\sleepingkirby\Documents\philips-15.5\cs_proj05_dicom2mov\cs_proj05_dicom2mov\bin\Debug\NLog.xml

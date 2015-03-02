@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace cs_proj05_dicom2mov
 {
     class sys
@@ -15,20 +16,21 @@ namespace cs_proj05_dicom2mov
         public static string stillsPath;
         public static string outPath;
         public static string dicomsPath;
+        public static IDictionary<string, string> convsettings;
 
         static sys()
         {
             readProgConf();
+
         }
 
-        public static string getPresets(string fpath)
+        public static IDictionary<string, string> getPresets(string fpath)
         {
             if (fpath == "")
             {
-                return "";
+                return null;
             }
 
-            string rtrnstr = "";
             string[] stringTo = new string[2];
             char[] delimitChar = new char[] { '=' };
             stringTo[0] = "size";//currenty_directory=
@@ -42,7 +44,7 @@ namespace cs_proj05_dicom2mov
             catch (Exception errStr)
             {
                 popup.msg("sys.getPresets had an error trying to open "+fileloc+"\n Returned error: "+errStr.Message);
-                return "";
+                return null;
             }
 
             int i = 0;
@@ -61,10 +63,10 @@ namespace cs_proj05_dicom2mov
                         switch (i)
                         {
                             case 0:
-                                rtrnstr = rtrnstr + "-s " + tempArr[1] + " ";
+                                convsettings["size"] = tempArr[1];
                                 break;
                             case 1:
-                                rtrnstr = rtrnstr + "-f " + tempArr[1] + " ";
+                                convsettings["format"] = tempArr[1];
                                 break;
                             default:
                                 break;
@@ -74,7 +76,7 @@ namespace cs_proj05_dicom2mov
                     i++;
                 }
             }
-            return rtrnstr;
+            return convsettings;
         }
 
 
@@ -168,6 +170,16 @@ namespace cs_proj05_dicom2mov
                 return emptyArr;
             }
             string[] flist = Directory.GetFiles(dirpath);
+
+            int max = flist.Length;
+            int i = 0;
+            
+            while (i < max)
+            {
+                flist[i] = Path.GetFileName(flist[i]);
+                i++;
+            }
+
             return flist;
         } 
 
