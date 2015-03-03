@@ -34,7 +34,7 @@ namespace cs_proj05_dicom2mov
                 // instead, each file starts with IM_ 
                 // (should probably make "IM_" prefix a defined const somewhere)
                 if (dcm.EndsWith(".dcm") || filename.StartsWith("IM_")) {
-                    dcm_to_jpg(dcm, jpgTempDir + filename + ".png");
+                    dcm_to_jpg(dcmDir + @"DICOM\" + dcm, jpgTempDir + filename + ".png");
                 }
                 
             }
