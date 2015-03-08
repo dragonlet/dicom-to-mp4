@@ -15,7 +15,9 @@ namespace cs_proj05_dicom2mov
         [STAThread]
         static void Main()
         {
-           
+
+ 
+
             string test = sys.dicomsPath;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

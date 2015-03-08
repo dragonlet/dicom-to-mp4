@@ -183,6 +183,40 @@ namespace cs_proj05_dicom2mov
             return flist;
         } 
 
+        public static string[] getDirs(string dir)
+        {
+            if (dir == "")
+            {
+                //stub for getting default directory.
+            dir=dicomsPath;    
+            }
+            string dirpath = Environment.ExpandEnvironmentVariables(dir);
+
+            try
+            {
+                string[] testflist = Directory.GetDirectories(dirpath);
+            }
+            catch (Exception errStr)
+            {
+                popup.msg("getDirs had an error getting files under: " + dirpath + "\n returned error: " + errStr.Message);
+                string[] emptyArr = new string[0];
+                return emptyArr;
+            }
+
+            string[] flist = Directory.GetDirectories(dirpath);
+            int dirmax = flist.Length;
+            string[] rtrnarr = new string[dirmax];
+            int i = 0;
+            foreach (string item in flist)
+            {
+                string[] strsplit = item.Split(Path.DirectorySeparatorChar);
+                int strsplitm = strsplit.Length;
+                rtrnarr[i]=strsplit[strsplitm - 1];
+                i++;
+            }
+            return rtrnarr;
+        }
+
         public static bool deleteFiles(string fname)
         {
 
