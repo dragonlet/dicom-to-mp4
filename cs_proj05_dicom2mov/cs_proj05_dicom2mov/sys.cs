@@ -181,7 +181,7 @@ namespace cs_proj05_dicom2mov
             }
 
             return flist;
-        } 
+        }
 
         public static string[] getDirs(string dir)
         {
