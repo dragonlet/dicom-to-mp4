@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace cs_proj05_dicom2mov
 {
@@ -10,28 +11,32 @@ namespace cs_proj05_dicom2mov
     {
         public static string[] getDicomFiles(string path)
         {
-            string[] dcmFiles;
+            //Won't work if DICOMDIR is not in the outer folder.
+            string[] dcmDirs;
             int counter = 0;
-            string[] files = sys.getFiles(path);
+            string[] dirs = sys.getDirs(path);
 
-            for (int i = 0; i < files.Length; i++)
+            foreach (string directory in dirs)
             {
-                if (files[i].EndsWith(".dcm"))
+                if (sys.getFiles(path + directory).Contains("DICOMDIR"))
                     counter++;
             }
             if (counter != 0)
             {
-                dcmFiles = new string[counter];
-                for (int i = 0; i < files.Length; i++)
+                dcmDirs = new string[counter];
+                for (int i = 0; i < dirs.Length; i++)
                 {
-                    if (files[i].EndsWith(".dcm"))
-                        dcmFiles[i] = files[i];
+                    if (sys.getFiles(path + dirs[i]).Contains("DICOMDIR"))
+                    {
+                        counter--;
+                        dcmDirs[counter] = dirs[i];
+                    }
                 }
             }
             else
-                dcmFiles = new string[0];
+                dcmDirs = new string[0];
 
-            return dcmFiles;
+            return dcmDirs;
         }
 
         public static string[] getMovFiles(string path)
@@ -63,10 +68,9 @@ namespace cs_proj05_dicom2mov
 
         // gui.convert() should deal with looping through multiple dicom datasets
         // each directory of .dcm files should be a different session or different scan
-        public static bool convert()
+        public static bool convert(string selectedDir)
         {
-            // hardcoded test case for now
-            conv.convert("example dicom structure");
+            conv.convert(selectedDir);
             popup.msg("converting...converted!");
             return true;
         }

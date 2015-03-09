@@ -36,11 +36,13 @@
             this.checklistMovieFiles = new System.Windows.Forms.CheckedListBox();
             this.flowlayoutMoveButton = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonMoveTo = new System.Windows.Forms.Button();
-            this.FileNavigator = new System.Windows.Forms.ListView();
-            this.moveToPath = new System.Windows.Forms.FolderBrowserDialog();
+            this.populateDrives = new System.Windows.Forms.Button();
+            this.DriveList = new System.Windows.Forms.CheckedListBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelConvertButton.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -55,13 +57,14 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanelConvertButton, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.checklistMovieFiles, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowlayoutMoveButton, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.FileNavigator, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.DriveList, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 3, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 1.698514F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.1104F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 471);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -140,19 +143,31 @@
             this.buttonMoveTo.UseVisualStyleBackColor = true;
             this.buttonMoveTo.Click += new System.EventHandler(this.buttonMoveTo_Click);
             // 
-            // FileNavigator
+            // populateDrives
             // 
-            this.FileNavigator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FileNavigator.Location = new System.Drawing.Point(660, 3);
-            this.FileNavigator.Name = "FileNavigator";
-            this.tableLayoutPanel1.SetRowSpan(this.FileNavigator, 3);
-            this.FileNavigator.Size = new System.Drawing.Size(213, 465);
-            this.FileNavigator.TabIndex = 5;
-            this.FileNavigator.UseCompatibleStateImageBehavior = false;
+            this.populateDrives.Location = new System.Drawing.Point(3, 3);
+            this.populateDrives.Name = "populateDrives";
+            this.populateDrives.Size = new System.Drawing.Size(75, 23);
+            this.populateDrives.TabIndex = 6;
+            this.populateDrives.Text = "Refresh";
+            this.populateDrives.UseVisualStyleBackColor = true;
+            this.populateDrives.Click += new System.EventHandler(this.populateDrives_Click);
             // 
-            // moveToPath
+            // DriveList
             // 
-            this.moveToPath.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.DriveList.FormattingEnabled = true;
+            this.DriveList.Location = new System.Drawing.Point(660, 11);
+            this.DriveList.Name = "DriveList";
+            this.DriveList.Size = new System.Drawing.Size(213, 409);
+            this.DriveList.TabIndex = 5;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.populateDrives);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(660, 426);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 42);
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
             // Form1
             // 
@@ -165,6 +180,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanelConvertButton.ResumeLayout(false);
             this.flowlayoutMoveButton.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -179,7 +195,8 @@
         private System.Windows.Forms.CheckedListBox checklistMovieFiles;
         private System.Windows.Forms.FlowLayoutPanel flowlayoutMoveButton;
         private System.Windows.Forms.Button buttonMoveTo;
-        private System.Windows.Forms.ListView FileNavigator;
-        private System.Windows.Forms.FolderBrowserDialog moveToPath;
+        private System.Windows.Forms.Button populateDrives;
+        private System.Windows.Forms.CheckedListBox DriveList;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

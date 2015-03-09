@@ -64,18 +64,33 @@ namespace cs_proj05_dicom2mov
 
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
-            //Currently opens a browse menu, and does nothing afterwards. Pending discussion.
-            DialogResult result = moveToPath.ShowDialog();
+            if (!Directory.Exists(DriveList.SelectedItem.ToString() + "dicom2mov"))
+                Directory.CreateDirectory(DriveList.SelectedItem.ToString() + "dicom2mov");
+            sys.copyFiles(sys.outPath + checklistMovieFiles.SelectedItem.ToString(), DriveList.SelectedItem.ToString() + @"dicom2mov\" + checklistMovieFiles.SelectedItem.ToString());
         }
 
         private void buttonConvert_Click(object sender, EventArgs e)
         {
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
-            //gui.convert(selectListDicom.SelectedItems, dropdownProfiles.SelectedIndex);
-
+            gui.convert(selectListDicom.SelectedItem.ToString() /*, dropdownProfiles.SelectedIndex*/);
             // all parameters will be set in gui.convert()
             // or does it need to happen here because of the way form list selection stuff works?
-            gui.convert();
+            // It needs to happen here.
+        }
+
+        private void populateDrives_Click(object sender, EventArgs e)
+        {
+            DriveList.Items.Clear();
+
+            DriveInfo[] ListDrives = DriveInfo.GetDrives();
+
+            foreach (DriveInfo Drive in ListDrives)
+            {
+                if (Drive.DriveType == DriveType.Removable)
+                {
+                    DriveList.Items.Add(Drive.ToString());
+                }
+            }
         }
     }
 }
