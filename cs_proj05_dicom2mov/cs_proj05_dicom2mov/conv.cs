@@ -45,8 +45,11 @@ namespace cs_proj05_dicom2mov
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
-            outS.VideoFrameCount=30;
-            outS.VideoFrameSize="640x480";
+            //outS.VideoFrameCount=30;
+            outS.CustomInputArgs = "-framerate 4";
+            //outS.CustomOutputArgs = "-framerate 2";
+            outS.VideoFrameSize=sys.convsettings["size"];
+            //outS.VideoFrameRate = 10;
             /* Got NReco to work a few notes:
              * 1) %05d is the bash syntax for a number that's padded with 0's for 5 digits. i.e. 00349
              * 2) ffmpeg only looks for stills with the file number of 0~4. ie. imagename000.png. If it doesn't find it, it gives "file not found" error.
@@ -55,7 +58,7 @@ namespace cs_proj05_dicom2mov
              */
 
             // just need to make this less hardcoded
-            ffMpeg.ConvertMedia(jpgTempDir + @"IM_%04d.png", "image2", outFile + @".mp4", "mp4", outS);
+            ffMpeg.ConvertMedia(jpgTempDir + @"IM_%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
                               //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
             return false;
         }
@@ -84,7 +87,7 @@ namespace cs_proj05_dicom2mov
             jpg_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
 
             // cleanup temp files
-            Directory.Delete(tempScanDirectory, true);
+            //Directory.Delete(tempScanDirectory, true);
         }
 
 

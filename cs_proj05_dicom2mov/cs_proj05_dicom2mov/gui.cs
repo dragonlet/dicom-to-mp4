@@ -71,7 +71,7 @@ namespace cs_proj05_dicom2mov
         public static bool convert(string selectedDir)
         {
             conv.convert(selectedDir);
-            popup.msg("converting...converted!");
+            popup.msg("file: \""+selectedDir+"\" converted.");
             return true;
         }
     }

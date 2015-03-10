@@ -42,6 +42,7 @@ namespace cs_proj05_dicom2mov
 
         private void initMovList()
         {
+            checklistMovieFiles.Items.Clear();
             string[] movList = gui.getMovFiles(sys.outPath);
             if (movList.Length > 0)
             {
@@ -60,6 +61,16 @@ namespace cs_proj05_dicom2mov
         private void initProfileList()
         {
             // dropdownProfiles.DataSource = ?? (this can be any type of list, array, dict; I am just unclear on what it gets data from. Presets?)
+            string[] presetspre = sys.getFiles(sys.presetPath);
+            string[] presets=new string[presetspre.Length];
+            int i = 0;
+            while (i < presetspre.Length)
+            {
+                presets[i] = presetspre[i].Replace(".txt", "");//removes the .txt to make it better sight-wise.
+                i++;
+            }
+
+            dropdownProfiles.DataSource = presets;
         }
 
         private void buttonMoveTo_Click(object sender, EventArgs e)
@@ -72,7 +83,14 @@ namespace cs_proj05_dicom2mov
         private void buttonConvert_Click(object sender, EventArgs e)
         {
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
-            gui.convert(selectListDicom.SelectedItem.ToString() /*, dropdownProfiles.SelectedIndex*/);
+            string presetfile = sys.presetPath + dropdownProfiles.SelectedValue;
+            IDictionary<string, string> presetsettings = sys.getPresets(presetfile+".txt");
+            foreach (object item in selectListDicom.CheckedItems)
+            {
+                //gui.convert(selectListDicom.SelectedItem.ToString() /*, dropdownProfiles.SelectedIndex*/);
+                gui.convert(item.ToString() /*, dropdownProfiles.SelectedIndex*/);
+            }
+            initMovList(); //update mov list
             // all parameters will be set in gui.convert()
             // or does it need to happen here because of the way form list selection stuff works?
             // It needs to happen here.

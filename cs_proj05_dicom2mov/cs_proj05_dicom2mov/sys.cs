@@ -21,7 +21,7 @@ namespace cs_proj05_dicom2mov
         static sys()
         {
             readProgConf();
-
+            convsettings=new Dictionary<string, string>();
         }
 
         public static IDictionary<string, string> getPresets(string fpath)

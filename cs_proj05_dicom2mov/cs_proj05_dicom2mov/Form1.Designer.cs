@@ -36,9 +36,9 @@
             this.checklistMovieFiles = new System.Windows.Forms.CheckedListBox();
             this.flowlayoutMoveButton = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonMoveTo = new System.Windows.Forms.Button();
-            this.populateDrives = new System.Windows.Forms.Button();
             this.DriveList = new System.Windows.Forms.CheckedListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.populateDrives = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanelConvertButton.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
@@ -85,9 +85,8 @@
             this.dropdownProfiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dropdownProfiles.FormattingEnabled = true;
             this.dropdownProfiles.Items.AddRange(new object[] {
-            "test",
-            "test1",
-            "test2"});
+            "preset1",
+            "preset2"});
             this.dropdownProfiles.Location = new System.Drawing.Point(222, 3);
             this.dropdownProfiles.Name = "dropdownProfiles";
             this.dropdownProfiles.Size = new System.Drawing.Size(213, 21);
@@ -143,16 +142,6 @@
             this.buttonMoveTo.UseVisualStyleBackColor = true;
             this.buttonMoveTo.Click += new System.EventHandler(this.buttonMoveTo_Click);
             // 
-            // populateDrives
-            // 
-            this.populateDrives.Location = new System.Drawing.Point(3, 3);
-            this.populateDrives.Name = "populateDrives";
-            this.populateDrives.Size = new System.Drawing.Size(75, 23);
-            this.populateDrives.TabIndex = 6;
-            this.populateDrives.Text = "Refresh";
-            this.populateDrives.UseVisualStyleBackColor = true;
-            this.populateDrives.Click += new System.EventHandler(this.populateDrives_Click);
-            // 
             // DriveList
             // 
             this.DriveList.FormattingEnabled = true;
@@ -168,6 +157,16 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 42);
             this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // populateDrives
+            // 
+            this.populateDrives.Location = new System.Drawing.Point(3, 3);
+            this.populateDrives.Name = "populateDrives";
+            this.populateDrives.Size = new System.Drawing.Size(75, 23);
+            this.populateDrives.TabIndex = 6;
+            this.populateDrives.Text = "Refresh";
+            this.populateDrives.UseVisualStyleBackColor = true;
+            this.populateDrives.Click += new System.EventHandler(this.populateDrives_Click);
             // 
             // Form1
             // 
