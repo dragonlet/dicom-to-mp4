@@ -12,35 +12,26 @@ namespace cs_proj05_dicom2mov
     class conv
     {
 
-        // extract one jpg from one .dcm file
-        public static void dcm_to_jpg(string dcmFile, string jpgFile)
+        // extract all frames from a .dcm file
+        public static void dcm_to_jpg(string dcmFile, string jpgTempDir)
         {
             var image = new DicomImage(dcmFile);
-            image.RenderImage().Save(jpgFile);
-        }
+            int frames = image.NumberOfFrames;
 
-        // converts all dcm files in a directory to jpg
-        public static void all_dcm_to_jpg(string dcmDir, string jpgTempDir)
-        {
-            string[] files = sys.getFiles(dcmDir + @"DICOM\");
-            string filename;
+            // number format, making sure its prefixed with appropriate number of zeros
+            // currently guarantees a four digit number 
+            // (dont think ive see dicom files with thousands of frames?)
+            string fmt = "0000";
+            string jpgPrefix = "asdf"; // get from dicomObj
 
-            foreach(string dcm in files) {
-
-                filename = Path.GetFileNameWithoutExtension(dcm);
-
-                // first to check if files end with .dcm
-                // but apparently Philips doesn't use file extensions for their DICOM files?
-                // instead, each file starts with IM_ 
-                // (should probably make "IM_" prefix a defined const somewhere)
-                if (dcm.EndsWith(".dcm") || filename.StartsWith("IM_")) {
-                    dcm_to_jpg(dcmDir + @"DICOM\" + dcm, jpgTempDir + filename + ".png");
-                }
-                
+            for (int i = 0; i < frames; i++)
+            {
+                // render each frame as a jpg
+                image.RenderImage(i).Save(jpgTempDir + jpgPrefix + i.ToString(fmt) + ".png");
             }
         }
 
-        // convert directory of jpg images to mp4
+        // convert directory of jpg images to video
         public static Boolean jpg_to_mp4(string jpgTempDir, string outFile)
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
@@ -58,38 +49,29 @@ namespace cs_proj05_dicom2mov
              */
 
             // just need to make this less hardcoded
-            ffMpeg.ConvertMedia(jpgTempDir + @"IM_%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
+            ffMpeg.ConvertMedia(jpgTempDir + @"asdf%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
                               //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
             return false;
         }
 
-        // conversion routine for one dicom dataset (one scan, one directory)
-        // dicomScan should be a subdirectory in the sys.dicomsPath indicating 
-        // a specific scan or dataset
+        // conversion routine: one dcm = one scan
         public static void convert(string dicomScan)
         {
-
-            // add \ at end of scan name
-            if (!dicomScan.EndsWith(@"\"))
-            {
-                dicomScan += @"\";
-            }
+            // dicomScan will either be the dicomObj passed in or will grab info from global
 
             // check and create temp directory 
-            string tempScanDirectory = sys.stillsPath + dicomScan;
+            string tempScanDirectory = sys.stillsPath + dicomScan + @"\";
             if (!Directory.Exists(tempScanDirectory))
             {
                 Directory.CreateDirectory(tempScanDirectory);
             }
 
             // uses all defined paths + name of the dicom directory
-            all_dcm_to_jpg(sys.dicomsPath + dicomScan, tempScanDirectory);
+            dcm_to_jpg(sys.dicomsPath + dicomScan, tempScanDirectory);
             jpg_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
 
             // cleanup temp files
             //Directory.Delete(tempScanDirectory, true);
         }
-
-
     }
 }
