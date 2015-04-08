@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="conv.cs" />
+    <Compile Include="dicom.cs" />
     <Compile Include="gui.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
