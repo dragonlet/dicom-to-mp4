@@ -102,5 +102,9 @@ ISO_14496_10 MPEG-4 AVC/H.264 Compression
 
         }
 
+        public override string ToString()
+        {
+            return patientName + dateOfScan + timeOfScan;
+        }
     }
 }
