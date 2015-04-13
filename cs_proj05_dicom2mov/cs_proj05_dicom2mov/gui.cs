@@ -11,32 +11,8 @@ namespace cs_proj05_dicom2mov
     {
         public static string[] getDicomFiles(string path)
         {
-            //Won't work if DICOMDIR is not in the outer folder.
-            string[] dcmDirs;
-            int counter = 0;
-            string[] dirs = sys.getDirs(path);
-
-            foreach (string directory in dirs)
-            {
-                if (sys.getFiles(path + directory).Contains("DICOMDIR"))
-                    counter++;
-            }
-            if (counter != 0)
-            {
-                dcmDirs = new string[counter];
-                for (int i = 0; i < dirs.Length; i++)
-                {
-                    if (sys.getFiles(path + dirs[i]).Contains("DICOMDIR"))
-                    {
-                        counter--;
-                        dcmDirs[counter] = dirs[i];
-                    }
-                }
-            }
-            else
-                dcmDirs = new string[0];
-
-            return dcmDirs;
+            string[] dcmFiles = sys.getFiles(path);
+            return dcmFiles;
         }
 
         public static string[] getMovFiles(string path)
