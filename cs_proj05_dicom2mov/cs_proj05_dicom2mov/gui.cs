@@ -17,29 +17,8 @@ namespace cs_proj05_dicom2mov
 
         public static string[] getMovFiles(string path)
         {
-            //Currently only checks for mp4 files. Any other extensions need to be added once we figure out the options we are giving users.
-            string[] movFiles;
-            int counter = 0;
-            string[] files = sys.getFiles(path);
-
-            for (int i = 0; i < files.Length; i++)
-            {
-                if (files[i].EndsWith(".mp4"))
-                    counter++;
-            }
-            if (counter != 0)
-            {
-                movFiles = new string[counter];
-                for (int i = 0; i < files.Length; i++)
-                {
-                    if (files[i].EndsWith(".mp4"))
-                        movFiles[i] = files[i];
-                }
-            }
-            else
-                movFiles = new string[0];
-
-            return movFiles;
+            string[] dcmFiles = sys.getFiles(path);
+            return dcmFiles;
         }
 
         // gui.convert() should deal with looping through multiple dicom datasets
