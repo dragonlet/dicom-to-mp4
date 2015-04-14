@@ -51,6 +51,7 @@ namespace cs_proj05_dicom2mov
                 {
                     checklistMovieFiles.Items.Add(file);
                 }
+                checklistMovieFiles.SelectionMode = SelectionMode.One;
             }
             else
             {

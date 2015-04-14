@@ -68,6 +68,7 @@
             // 
             // checklistMovieFiles
             // 
+            this.checklistMovieFiles.CheckOnClick = true;
             this.checklistMovieFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checklistMovieFiles.FormattingEnabled = true;
             this.checklistMovieFiles.Location = new System.Drawing.Point(441, 3);
