@@ -88,8 +88,8 @@ namespace cs_proj05_dicom2mov
             IDictionary<string, string> presetsettings = sys.getPresets(presetfile+".txt");
             foreach (object item in selectListDicom.CheckedItems)
             {
-                //gui.convert(selectListDicom.SelectedItem.ToString() /*, dropdownProfiles.SelectedIndex*/);
-                gui.convert(item.ToString() /*, dropdownProfiles.SelectedIndex*/);
+                string toPass = item.ToString();
+                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1) /*, dropdownProfiles.SelectedIndex*/);
             }
             initMovList(); //update mov list
             // all parameters will be set in gui.convert()

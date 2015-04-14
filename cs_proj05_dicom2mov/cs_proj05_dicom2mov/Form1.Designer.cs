@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.checklistMovieFiles = new System.Windows.Forms.CheckedListBox();
             this.flowlayoutMoveButton = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonMoveTo = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.populateDrives = new System.Windows.Forms.Button();
+            this.DriveList = new System.Windows.Forms.CheckedListBox();
+            this.selectListDicom = new System.Windows.Forms.CheckedListBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonConvert = new System.Windows.Forms.Button();
             this.dropdownProfiles = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectListDicom = new System.Windows.Forms.CheckedListBox();
-            this.DriveList = new System.Windows.Forms.CheckedListBox();
-            this.checklistMovieFiles = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -65,6 +65,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.704884F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 471);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // checklistMovieFiles
+            // 
+            this.checklistMovieFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checklistMovieFiles.FormattingEnabled = true;
+            this.checklistMovieFiles.Location = new System.Drawing.Point(441, 3);
+            this.checklistMovieFiles.Name = "checklistMovieFiles";
+            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 424);
+            this.checklistMovieFiles.TabIndex = 3;
             // 
             // flowlayoutMoveButton
             // 
@@ -105,6 +114,36 @@
             this.populateDrives.UseVisualStyleBackColor = true;
             this.populateDrives.Click += new System.EventHandler(this.populateDrives_Click);
             // 
+            // DriveList
+            // 
+            this.DriveList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DriveList.FormattingEnabled = true;
+            this.DriveList.Location = new System.Drawing.Point(660, 3);
+            this.DriveList.Name = "DriveList";
+            this.DriveList.Size = new System.Drawing.Size(213, 424);
+            this.DriveList.TabIndex = 5;
+            // 
+            // selectListDicom
+            // 
+            this.selectListDicom.CheckOnClick = true;
+            this.selectListDicom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectListDicom.FormattingEnabled = true;
+            this.selectListDicom.Location = new System.Drawing.Point(3, 3);
+            this.selectListDicom.Name = "selectListDicom";
+            this.selectListDicom.Size = new System.Drawing.Size(432, 424);
+            this.selectListDicom.TabIndex = 8;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.buttonConvert);
+            this.flowLayoutPanel2.Controls.Add(this.dropdownProfiles);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 433);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(432, 35);
+            this.flowLayoutPanel2.TabIndex = 9;
+            // 
             // buttonConvert
             // 
             this.buttonConvert.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -127,45 +166,6 @@
             this.dropdownProfiles.Name = "dropdownProfiles";
             this.dropdownProfiles.Size = new System.Drawing.Size(213, 21);
             this.dropdownProfiles.TabIndex = 1;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.buttonConvert);
-            this.flowLayoutPanel2.Controls.Add(this.dropdownProfiles);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 433);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(432, 35);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
-            // selectListDicom
-            // 
-            this.selectListDicom.CheckOnClick = true;
-            this.selectListDicom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectListDicom.FormattingEnabled = true;
-            this.selectListDicom.Location = new System.Drawing.Point(3, 3);
-            this.selectListDicom.Name = "selectListDicom";
-            this.selectListDicom.Size = new System.Drawing.Size(432, 424);
-            this.selectListDicom.TabIndex = 8;
-            // 
-            // DriveList
-            // 
-            this.DriveList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DriveList.FormattingEnabled = true;
-            this.DriveList.Location = new System.Drawing.Point(660, 3);
-            this.DriveList.Name = "DriveList";
-            this.DriveList.Size = new System.Drawing.Size(213, 424);
-            this.DriveList.TabIndex = 5;
-            // 
-            // checklistMovieFiles
-            // 
-            this.checklistMovieFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checklistMovieFiles.FormattingEnabled = true;
-            this.checklistMovieFiles.Location = new System.Drawing.Point(441, 3);
-            this.checklistMovieFiles.Name = "checklistMovieFiles";
-            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 424);
-            this.checklistMovieFiles.TabIndex = 3;
             // 
             // Form1
             // 
