@@ -44,7 +44,7 @@ namespace cs_proj05_dicom2mov
 
         // gui.convert() should deal with looping through multiple dicom datasets
         // each directory of .dcm files should be a different session or different scan
-        public static bool convert(string selectedDir)
+        public static bool convert(string filename)
         {
             // create the dicomObj somewhere
             // global or pass it to conv.convert() function?
@@ -53,9 +53,9 @@ namespace cs_proj05_dicom2mov
             //conv.dcm_to_jpg(@"C:\Users\ajw\Documents\DICOM Samples\philips\EPIQ 1.2 Adult Echo Demo Exam wSR\DICOM\IM_0020", @"asdf");
             
             // make sure to put IM_0020 into your appdata\roaming\dicom2mov\dicoms folder
-            conv.convert("IM_0020");
+            conv.convert(filename);
 
-            popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
+            //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
             return true;
         }
     }
