@@ -39,10 +39,17 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonConvert = new System.Windows.Forms.Button();
             this.dropdownProfiles = new System.Windows.Forms.ComboBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.increaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,12 +65,12 @@
             this.tableLayoutPanel1.Controls.Add(this.selectListDicom, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.29512F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.704884F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 471);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 447);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // checklistMovieFiles
@@ -73,7 +80,7 @@
             this.checklistMovieFiles.FormattingEnabled = true;
             this.checklistMovieFiles.Location = new System.Drawing.Point(441, 3);
             this.checklistMovieFiles.Name = "checklistMovieFiles";
-            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 424);
+            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 402);
             this.checklistMovieFiles.TabIndex = 3;
             // 
             // flowlayoutMoveButton
@@ -81,9 +88,9 @@
             this.flowlayoutMoveButton.Controls.Add(this.buttonMoveTo);
             this.flowlayoutMoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowlayoutMoveButton.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowlayoutMoveButton.Location = new System.Drawing.Point(441, 433);
+            this.flowlayoutMoveButton.Location = new System.Drawing.Point(441, 411);
             this.flowlayoutMoveButton.Name = "flowlayoutMoveButton";
-            this.flowlayoutMoveButton.Size = new System.Drawing.Size(213, 35);
+            this.flowlayoutMoveButton.Size = new System.Drawing.Size(213, 33);
             this.flowlayoutMoveButton.TabIndex = 4;
             // 
             // buttonMoveTo
@@ -100,9 +107,9 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.populateDrives);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(660, 433);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(660, 411);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 35);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 33);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // populateDrives
@@ -121,7 +128,7 @@
             this.DriveList.FormattingEnabled = true;
             this.DriveList.Location = new System.Drawing.Point(660, 3);
             this.DriveList.Name = "DriveList";
-            this.DriveList.Size = new System.Drawing.Size(213, 424);
+            this.DriveList.Size = new System.Drawing.Size(213, 402);
             this.DriveList.TabIndex = 5;
             // 
             // selectListDicom
@@ -131,7 +138,7 @@
             this.selectListDicom.FormattingEnabled = true;
             this.selectListDicom.Location = new System.Drawing.Point(3, 3);
             this.selectListDicom.Name = "selectListDicom";
-            this.selectListDicom.Size = new System.Drawing.Size(432, 424);
+            this.selectListDicom.Size = new System.Drawing.Size(432, 402);
             this.selectListDicom.TabIndex = 8;
             // 
             // flowLayoutPanel2
@@ -140,9 +147,9 @@
             this.flowLayoutPanel2.Controls.Add(this.dropdownProfiles);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 433);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 411);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(432, 35);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(432, 33);
             this.flowLayoutPanel2.TabIndex = 9;
             // 
             // buttonConvert
@@ -168,19 +175,73 @@
             this.dropdownProfiles.Size = new System.Drawing.Size(213, 21);
             this.dropdownProfiles.TabIndex = 1;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.fontSizeToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(876, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // fontSizeToolStripMenuItem
+            // 
+            this.fontSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.increaseToolStripMenuItem,
+            this.decreaseToolStripMenuItem});
+            this.fontSizeToolStripMenuItem.Name = "fontSizeToolStripMenuItem";
+            this.fontSizeToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.fontSizeToolStripMenuItem.Text = "Font Size";
+            // 
+            // increaseToolStripMenuItem
+            // 
+            this.increaseToolStripMenuItem.Name = "increaseToolStripMenuItem";
+            this.increaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.increaseToolStripMenuItem.Text = "Increase";
+            this.increaseToolStripMenuItem.Click += new System.EventHandler(this.increaseToolStripMenuItem_Click);
+            // 
+            // decreaseToolStripMenuItem
+            // 
+            this.decreaseToolStripMenuItem.Name = "decreaseToolStripMenuItem";
+            this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.decreaseToolStripMenuItem.Text = "Decrease";
+            this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 471);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Dicom To Movie";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowlayoutMoveButton.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -197,6 +258,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button buttonConvert;
         private System.Windows.Forms.ComboBox dropdownProfiles;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fontSizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
 
     }
 }
