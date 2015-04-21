@@ -13,7 +13,7 @@ namespace cs_proj05_dicom2mov
     {
 
         // extract all frames from a .dcm file
-        public static void dcm_to_jpg(string dcmFile, string jpgTempDir)
+        public static void dcm_to_png(string dcmFile, string pngTempDir)
         {
             var image = new DicomImage(dcmFile);
             int frames = image.NumberOfFrames;
@@ -22,17 +22,16 @@ namespace cs_proj05_dicom2mov
             // currently guarantees a four digit number 
             // (dont think ive see dicom files with thousands of frames?)
             string fmt = "0000";
-            string jpgPrefix = "asdf"; // get from dicomObj
 
             for (int i = 0; i < frames; i++)
             {
                 // render each frame as a jpg
-                image.RenderImage(i).Save(jpgTempDir + jpgPrefix + i.ToString(fmt) + ".png");
+                image.RenderImage(i).Save(pngTempDir + i.ToString(fmt) + ".png");
             }
         }
 
-        // convert directory of jpg images to video
-        public static Boolean jpg_to_mp4(string jpgTempDir, string outFile)
+        // convert directory of png images to video
+        public static Boolean png_to_mp4(string pngTempDir, string outFile)
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
@@ -49,7 +48,7 @@ namespace cs_proj05_dicom2mov
              */
 
             // just need to make this less hardcoded
-            ffMpeg.ConvertMedia(jpgTempDir + @"asdf%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
+            ffMpeg.ConvertMedia(pngTempDir + @"%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
                               //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
             return false;
         }
@@ -67,8 +66,8 @@ namespace cs_proj05_dicom2mov
             }
 
             // uses all defined paths + name of the dicom directory
-            dcm_to_jpg(sys.dicomsPath + dicomScan, tempScanDirectory);
-            jpg_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
+            dcm_to_png(sys.dicomsPath + dicomScan, tempScanDirectory);
+            png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
 
             // cleanup temp files
             //Directory.Delete(tempScanDirectory, true);
