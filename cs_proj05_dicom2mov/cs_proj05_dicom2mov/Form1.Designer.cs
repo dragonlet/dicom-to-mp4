@@ -124,6 +124,7 @@
             // 
             // DriveList
             // 
+            this.DriveList.CheckOnClick = true;
             this.DriveList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DriveList.FormattingEnabled = true;
             this.DriveList.Location = new System.Drawing.Point(660, 3);
@@ -197,7 +198,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -213,14 +214,14 @@
             // increaseToolStripMenuItem
             // 
             this.increaseToolStripMenuItem.Name = "increaseToolStripMenuItem";
-            this.increaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.increaseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.increaseToolStripMenuItem.Text = "Increase";
             this.increaseToolStripMenuItem.Click += new System.EventHandler(this.increaseToolStripMenuItem_Click);
             // 
             // decreaseToolStripMenuItem
             // 
             this.decreaseToolStripMenuItem.Name = "decreaseToolStripMenuItem";
-            this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.decreaseToolStripMenuItem.Text = "Decrease";
             this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
             // 

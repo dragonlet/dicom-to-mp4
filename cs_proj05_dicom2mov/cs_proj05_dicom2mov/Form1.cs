@@ -20,6 +20,7 @@ namespace cs_proj05_dicom2mov
             this.Size = new Size(x, y);
             initDicomList();
             initMovList();
+            initDriveList();
             initProfileList();
         }
 
@@ -75,6 +76,21 @@ namespace cs_proj05_dicom2mov
             dropdownProfiles.DataSource = presets;
         }
 
+        private void initDriveList()
+        {
+            DriveList.Items.Clear();
+
+            DriveInfo[] ListDrives = DriveInfo.GetDrives();
+
+            foreach (DriveInfo Drive in ListDrives)
+            {
+                if (Drive.DriveType == DriveType.Removable)
+                {
+                    DriveList.Items.Add(Drive.ToString());
+                }
+            }
+        }
+
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(DriveList.SelectedItem.ToString() + "dicom2mov"))
@@ -104,17 +120,7 @@ namespace cs_proj05_dicom2mov
 
         private void populateDrives_Click(object sender, EventArgs e)
         {
-            DriveList.Items.Clear();
-
-            DriveInfo[] ListDrives = DriveInfo.GetDrives();
-
-            foreach (DriveInfo Drive in ListDrives)
-            {
-                if (Drive.DriveType == DriveType.Removable)
-                {
-                    DriveList.Items.Add(Drive.ToString());
-                }
-            }
+            initDriveList();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
