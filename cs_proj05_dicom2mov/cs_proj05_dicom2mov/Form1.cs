@@ -87,11 +87,15 @@ namespace cs_proj05_dicom2mov
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             string presetfile = sys.presetPath + dropdownProfiles.SelectedValue;
             IDictionary<string, string> presetsettings = sys.getPresets(presetfile+".txt");
+            buttonConvert.Text = "Converting";
+            buttonConvert.Enabled = false;
             foreach (object item in selectListDicom.CheckedItems)
             {
                 string toPass = item.ToString();
                 gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1) /*, dropdownProfiles.SelectedIndex*/);
             }
+            buttonConvert.Text = "Convert";
+            buttonConvert.Enabled = true;
             initMovList(); //update mov list
             // all parameters will be set in gui.convert()
             // or does it need to happen here because of the way form list selection stuff works?
@@ -111,6 +115,20 @@ namespace cs_proj05_dicom2mov
                     DriveList.Items.Add(Drive.ToString());
                 }
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
