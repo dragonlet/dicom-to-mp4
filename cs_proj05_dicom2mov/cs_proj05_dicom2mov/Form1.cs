@@ -118,6 +118,15 @@ namespace cs_proj05_dicom2mov
             // It needs to happen here.
         }
 
+        protected void selectListDicom_ItemCheck(object sender, System.Windows.Forms.ItemCheckEventArgs e)
+        {
+            string selected = selectListDicom.SelectedItem.ToString();
+            dcm item = new dcm(sys.dicomsPath + selected.Substring(selected.LastIndexOf('|') + 1));
+
+            Details.Text = item.patientName + Environment.NewLine + item.dateOfScan + Environment.NewLine + item.timeOfScan;
+                
+        }
+
         private void populateDrives_Click(object sender, EventArgs e)
         {
             initDriveList();
