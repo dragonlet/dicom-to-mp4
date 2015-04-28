@@ -31,13 +31,11 @@ namespace cs_proj05_dicom2mov
         }
 
         // convert directory of png images to video
-        public static Boolean png_to_mp4(string pngTempDir, string outFile)
+        public static Boolean png_to_mp4(string pngTempDir, string outFile, string fps="4")
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
-            //outS.VideoFrameCount=30;
-            outS.CustomInputArgs = "-framerate 4";
-            //outS.CustomOutputArgs = "-framerate 2";
+            outS.CustomInputArgs = "-framerate " + fps;
             outS.VideoFrameSize=sys.convsettings["size"];
             //outS.VideoFrameRate = 10;
             /* Got NReco to work a few notes:

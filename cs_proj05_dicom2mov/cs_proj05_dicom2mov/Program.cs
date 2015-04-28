@@ -15,15 +15,12 @@ namespace cs_proj05_dicom2mov
         [STAThread]
         static void Main(string[] args)
         {
-
-
             if (args.Length >= 1)
             {
-                var cmdParams = cmd.paramParse(args); 
-                //Dictionary<string, List<string>>. Call via hash of array.
-                //i.e. cs_proj05_dicom2mov.exe -name1 val1 val2 --name2 val3 val4 val5
-                // cmdParams["name1"][0] == val1
-                // cmdParams["name2"][2] == val5
+                //-cmd convert -files IM_0010 -preset "ipad max res.txt"
+                string returnstr= cmd.main(args);
+                Console.WriteLine(returnstr);
+                return;
             }
 
             Application.EnableVisualStyles();
