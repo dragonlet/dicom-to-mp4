@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace cs_proj05_dicom2mov
 {
@@ -30,8 +32,9 @@ namespace cs_proj05_dicom2mov
 
             // my hard coded test cases:
             //conv.dcm_to_jpg(@"C:\Users\ajw\Documents\DICOM Samples\philips\EPIQ 1.2 Adult Echo Demo Exam wSR\DICOM\IM_0020", @"asdf");
-            
             // make sure to put IM_0020 into your appdata\roaming\dicom2mov\dicoms folder
+            //ProgressWindow form2 = new ProgressWindow();
+            //form2.Show();
             conv.convert(filename);
 
             //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");

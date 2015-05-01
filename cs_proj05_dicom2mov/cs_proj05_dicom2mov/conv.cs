@@ -11,7 +11,7 @@ namespace cs_proj05_dicom2mov
 {
     class conv
     {
-
+        
         // extract all frames from a .dcm file
         public static void dcm_to_png(string dcmFile, string pngTempDir)
         {
@@ -28,6 +28,7 @@ namespace cs_proj05_dicom2mov
                 // render each frame as a jpg
                 image.RenderImage(i).Save(pngTempDir + i.ToString(fmt) + ".png");
             }
+            
         }
 
         // convert directory of png images to video
@@ -44,6 +45,10 @@ namespace cs_proj05_dicom2mov
              * 3) NReco can be found in the folder.
              * conv.convert(); in program to call.
              */
+            //ffMpeg.ConvertProgress += (o, args) => {
+            //Console.WriteLine( String.Format("Progress: {0} / {1}\r\n", args.Processed, args.TotalDuration ));
+            //};
+
 
             // just need to make this less hardcoded
             ffMpeg.ConvertMedia(pngTempDir + @"%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);

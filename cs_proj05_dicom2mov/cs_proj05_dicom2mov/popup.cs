@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace cs_proj05_dicom2mov
 {
@@ -14,5 +15,6 @@ namespace cs_proj05_dicom2mov
             MessageBox.Show(showStr);
             return rtrnStr;
         }
+
     }
 }
