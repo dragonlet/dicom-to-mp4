@@ -174,5 +174,17 @@ namespace cs_proj05_dicom2mov
         {
 
         }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete the checked files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                foreach (object item in checklistMovieFiles.CheckedItems)
+                {
+                    sys.deleteFiles(sys.outPath + item);
+                }
+                initMovList();
+            }
+        }
     }
 }

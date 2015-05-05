@@ -47,6 +47,7 @@
             this.fontSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowlayoutMoveButton.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -93,6 +94,7 @@
             // flowlayoutMoveButton
             // 
             this.flowlayoutMoveButton.Controls.Add(this.buttonMoveTo);
+            this.flowlayoutMoveButton.Controls.Add(this.Delete);
             this.flowlayoutMoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowlayoutMoveButton.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowlayoutMoveButton.Location = new System.Drawing.Point(440, 410);
@@ -150,7 +152,6 @@
             this.selectListDicom.Name = "selectListDicom";
             this.selectListDicom.Size = new System.Drawing.Size(431, 312);
             this.selectListDicom.TabIndex = 8;
-            this.selectListDicom.ItemCheck += selectListDicom_ItemCheck;
             // 
             // flowLayoutPanel2
             // 
@@ -256,6 +257,16 @@
             this.decreaseToolStripMenuItem.Text = "Decrease";
             this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
             // 
+            // Delete
+            // 
+            this.Delete.Location = new System.Drawing.Point(54, 3);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(75, 23);
+            this.Delete.TabIndex = 6;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +312,7 @@
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
         private System.Windows.Forms.TextBox Details;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Delete;
 
     }
 }
