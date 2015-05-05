@@ -152,6 +152,7 @@
             this.selectListDicom.Name = "selectListDicom";
             this.selectListDicom.Size = new System.Drawing.Size(431, 312);
             this.selectListDicom.TabIndex = 8;
+            this.selectListDicom.ItemCheck += selectListDicom_ItemCheck;
             // 
             // flowLayoutPanel2
             // 
