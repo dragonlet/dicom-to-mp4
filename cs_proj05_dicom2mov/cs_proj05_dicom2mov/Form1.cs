@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace cs_proj05_dicom2mov
 {
@@ -120,13 +121,29 @@ namespace cs_proj05_dicom2mov
             //ProgressWindow form2 = new ProgressWindow(selectListDicom.CheckedItems);
             //form2.Show();
             
+            ProgressWindow form2 = new ProgressWindow(selectListDicom.CheckedItems);
+            this.Enabled = false;
             foreach (object item in selectListDicom.CheckedItems)
             {
+                string toPass = item.ToString();    
+                form2.textbox(toPass.Substring(toPass.LastIndexOf('|') + 1));//filename
+                form2.progressbar(0);
 
-                string toPass = item.ToString();
-                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1));
+                form2.Show();
+                Application.DoEvents();
+                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1), form2);
+
+                
             }
-            
+            form2.setProgress(100);
+            form2.textbox("Done");
+            form2.progtext("Done");
+            form2.Update();
+            Application.DoEvents();
+            Thread.Sleep(2500);
+            form2.Close();
+            this.Enabled = true;
+            this.Focus();
             buttonConvert.Text = "Convert";
             buttonConvert.Enabled = true;
             

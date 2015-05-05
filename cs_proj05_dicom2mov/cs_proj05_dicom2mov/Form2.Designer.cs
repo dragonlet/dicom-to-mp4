@@ -30,7 +30,6 @@
         {
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.popuplabel = new System.Windows.Forms.Label();
-            this.popupcancel = new System.Windows.Forms.Button();
             this.popupprogtext = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -45,40 +44,32 @@
             // popuplabel
             // 
             this.popuplabel.AutoSize = true;
-            this.popuplabel.Location = new System.Drawing.Point(9, 57);
+            this.popuplabel.Location = new System.Drawing.Point(15, 35);
             this.popuplabel.Name = "popuplabel";
-            this.popuplabel.Size = new System.Drawing.Size(23, 13);
+            this.popuplabel.Size = new System.Drawing.Size(29, 13);
             this.popuplabel.TabIndex = 1;
-            this.popuplabel.Text = "null";
-            // 
-            // popupcancel
-            // 
-            this.popupcancel.Location = new System.Drawing.Point(205, 47);
-            this.popupcancel.Name = "popupcancel";
-            this.popupcancel.Size = new System.Drawing.Size(75, 23);
-            this.popupcancel.TabIndex = 2;
-            this.popupcancel.Text = "Cancel";
-            this.popupcancel.UseVisualStyleBackColor = true;
-            this.popupcancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.popuplabel.Text = "label";
+            this.popuplabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // popupprogtext
             // 
             this.popupprogtext.AutoSize = true;
-            this.popupprogtext.Location = new System.Drawing.Point(9, 35);
+            this.popupprogtext.Location = new System.Drawing.Point(15, 48);
             this.popupprogtext.Name = "popupprogtext";
-            this.popupprogtext.Size = new System.Drawing.Size(0, 13);
+            this.popupprogtext.Size = new System.Drawing.Size(45, 13);
             this.popupprogtext.TabIndex = 3;
+            this.popupprogtext.Text = "progtext";
             // 
             // ProgressWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 87);
+            this.ClientSize = new System.Drawing.Size(297, 73);
             this.Controls.Add(this.popupprogtext);
-            this.Controls.Add(this.popupcancel);
             this.Controls.Add(this.popuplabel);
             this.Controls.Add(this.progressBar1);
             this.Name = "ProgressWindow";
+            this.Load += new System.EventHandler(this.ProgressWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,8 +79,8 @@
 
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label popuplabel;
-        private System.Windows.Forms.Button popupcancel;
         private System.Windows.Forms.Label popupprogtext;
+
         
 
     }

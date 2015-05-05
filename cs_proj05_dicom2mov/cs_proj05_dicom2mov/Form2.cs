@@ -20,17 +20,18 @@ namespace cs_proj05_dicom2mov
         public ProgressWindow(CheckedListBox.CheckedItemCollection list)
         {
             InitializeComponent();
+            
             bgWorker = new BackgroundWorker();
             bgWorker.DoWork += new DoWorkEventHandler(job);
             bgWorker.ProgressChanged += new ProgressChangedEventHandler(progressChanged);
             bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(done);
             bgWorker.WorkerReportsProgress = true;
             bgWorker.WorkerSupportsCancellation = true;
-            popupcancel.Enabled = true;
+            //popupcancel.Enabled = true;
 
             // Kickoff the worker thread to begin it's DoWork function.
-            bgWorker.RunWorkerAsync(list);
-
+            //bgWorker.RunWorkerAsync(list);
+            
         }
 
         public string textbox(string str){
@@ -39,10 +40,35 @@ namespace cs_proj05_dicom2mov
             return str;
         }
 
+        public int progBarVal()
+        {
+
+            return progressBar1.Value;
+        }
+
+        public string progtext(string str)
+        {
+
+            popupprogtext.Text = str;
+            return str;
+        }
+
         public void progressbar(int i)
         {
 
             progressBar1.Increment(i);
+        }
+
+        public void setProgress(int i)
+        {
+
+            progressBar1.Value=i;
+        }
+        public void progBarMax()
+        {
+
+            progressBar1.Value = 1;
+            progressBar1.Maximum = 1;
         }
 
         public void progressChanged(object sender, ProgressChangedEventArgs e)
@@ -66,6 +92,9 @@ namespace cs_proj05_dicom2mov
             if (e.Cancelled)
             {
                 popuplabel.Text = "Task Cancelled.";
+                Application.DoEvents();
+                Thread.Sleep(1000);
+                this.Close();
                 
             }
             else if (e.Error != null)
@@ -81,7 +110,7 @@ namespace cs_proj05_dicom2mov
             }
             progressBar1.Update();
             //Change the status of the buttons on the UI accordingly
-            popupcancel.Enabled = false;
+            //popupcancel.Enabled = false;
 
             if (progressBar1.Value == progressBar1.Value)
             {
@@ -181,6 +210,11 @@ namespace cs_proj05_dicom2mov
             popuplabel.Text = str;
             Thread.Sleep(time);
             this.Close();
+
+        }
+
+        private void ProgressWindow_Load(object sender, EventArgs e)
+        {
 
         }
 

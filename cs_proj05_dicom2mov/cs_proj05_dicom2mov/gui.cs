@@ -40,5 +40,20 @@ namespace cs_proj05_dicom2mov
             //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
             return true;
         }
+        public static bool convert(string filename, ProgressWindow progform)
+        {
+            // create the dicomObj somewhere
+            // global or pass it to conv.convert() function?
+
+            // my hard coded test cases:
+            //conv.dcm_to_jpg(@"C:\Users\ajw\Documents\DICOM Samples\philips\EPIQ 1.2 Adult Echo Demo Exam wSR\DICOM\IM_0020", @"asdf");
+            // make sure to put IM_0020 into your appdata\roaming\dicom2mov\dicoms folder
+            //ProgressWindow form2 = new ProgressWindow();
+            //form2.Show();
+            conv.convert(filename, progform);
+
+            //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
+            return true;
+        }
     }
 }
