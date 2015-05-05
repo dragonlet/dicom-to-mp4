@@ -93,6 +93,12 @@ namespace cs_proj05_dicom2mov
 
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
+
+            if (DriveList.SelectedItem == null)
+            {
+                popup.msg("No drive selected for file move");
+                return;
+            }
             if (!Directory.Exists(DriveList.SelectedItem.ToString() + "dicom2mov"))
                 Directory.CreateDirectory(DriveList.SelectedItem.ToString() + "dicom2mov");
             sys.copyFiles(sys.outPath + checklistMovieFiles.SelectedItem.ToString(), DriveList.SelectedItem.ToString() + @"dicom2mov\" + checklistMovieFiles.SelectedItem.ToString());
@@ -100,18 +106,31 @@ namespace cs_proj05_dicom2mov
 
         private void buttonConvert_Click(object sender, EventArgs e)
         {
+
+            
+            
+
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             string presetfile = sys.presetPath + dropdownProfiles.SelectedValue;
             IDictionary<string, string> presetsettings = sys.getPresets(presetfile+".txt");
             buttonConvert.Text = "Converting";
             buttonConvert.Enabled = false;
+            Console.WriteLine(presetsettings.ToString());
+            
+            //ProgressWindow form2 = new ProgressWindow(selectListDicom.CheckedItems);
+            //form2.Show();
+            
             foreach (object item in selectListDicom.CheckedItems)
             {
+
                 string toPass = item.ToString();
-                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1) /*, dropdownProfiles.SelectedIndex*/);
+                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1));
             }
+            
             buttonConvert.Text = "Convert";
             buttonConvert.Enabled = true;
+            
+
             initMovList(); //update mov list
             // all parameters will be set in gui.convert()
             // or does it need to happen here because of the way form list selection stuff works?

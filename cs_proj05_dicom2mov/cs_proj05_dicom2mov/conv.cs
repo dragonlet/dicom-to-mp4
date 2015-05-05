@@ -11,7 +11,7 @@ namespace cs_proj05_dicom2mov
 {
     class conv
     {
-
+        
         // extract all frames from a .dcm file
         public static void dcm_to_png(string dcmFile, string pngTempDir)
         {
@@ -28,16 +28,15 @@ namespace cs_proj05_dicom2mov
                 // render each frame as a jpg
                 image.RenderImage(i).Save(pngTempDir + i.ToString(fmt) + ".png");
             }
+            
         }
 
         // convert directory of png images to video
-        public static Boolean png_to_mp4(string pngTempDir, string outFile)
+        public static Boolean png_to_mp4(string pngTempDir, string outFile, string fps="4")
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
-            //outS.VideoFrameCount=30;
-            outS.CustomInputArgs = "-framerate 4";
-            //outS.CustomOutputArgs = "-framerate 2";
+            outS.CustomInputArgs = "-framerate " + fps;
             outS.VideoFrameSize=sys.convsettings["size"];
             //outS.VideoFrameRate = 10;
             /* Got NReco to work a few notes:
@@ -46,6 +45,10 @@ namespace cs_proj05_dicom2mov
              * 3) NReco can be found in the folder.
              * conv.convert(); in program to call.
              */
+            //ffMpeg.ConvertProgress += (o, args) => {
+            //Console.WriteLine( String.Format("Progress: {0} / {1}\r\n", args.Processed, args.TotalDuration ));
+            //};
+
 
             // just need to make this less hardcoded
             ffMpeg.ConvertMedia(pngTempDir + @"%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
