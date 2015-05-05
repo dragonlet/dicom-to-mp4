@@ -32,7 +32,8 @@ namespace cs_proj05_dicom2mov
                 foreach (string file in dcmList)
                 {
                     dcm temp = new dcm(sys.dicomsPath + file);
-                    selectListDicom.Items.Add(temp);
+                    if (temp.frameNum > 1)
+                        selectListDicom.Items.Add(temp);
                 }
             }
             else
