@@ -33,7 +33,8 @@ namespace cs_proj05_dicom2mov
                 foreach (string file in dcmList)
                 {
                     dcm temp = new dcm(sys.dicomsPath + file);
-                    selectListDicom.Items.Add(temp);
+                    if (temp.frameNum > 1)
+                        selectListDicom.Items.Add(temp);
                 }
             }
             else
@@ -154,6 +155,29 @@ namespace cs_proj05_dicom2mov
             // It needs to happen here.
         }
 
+        protected void selectListDicom_ItemCheck(object sender, System.Windows.Forms.ItemCheckEventArgs e)
+        {
+            string selected = selectListDicom.SelectedItem.ToString();
+            dcm item = new dcm(sys.dicomsPath + selected.Substring(selected.LastIndexOf('|') + 1));
+
+            Details.Text = item.patientName + Environment.NewLine + convToDate(item.dateOfScan) + Environment.NewLine + convToTime(item.timeOfScan);
+                
+        }
+        private string convToTime(string input)
+        {
+            if (input == null)
+                return "";
+            DateTime myDate = DateTime.ParseExact(input, "HHmmss", null);
+            return myDate.Hour + ":" + myDate.Minute + ":" + myDate.Second;
+        }
+        private string convToDate(string input)
+        {
+            if (input == null)
+                return "";
+            DateTime myDate = DateTime.ParseExact(input, "yyyyMMdd", null);
+            return myDate.Month + "/" +  myDate.Day + "/" + myDate.Year;
+        }
+
         private void populateDrives_Click(object sender, EventArgs e)
         {
             initDriveList();
@@ -171,6 +195,18 @@ namespace cs_proj05_dicom2mov
         private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete the checked files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                foreach (object item in checklistMovieFiles.CheckedItems)
+                {
+                    sys.deleteFiles(sys.outPath + item);
+                }
+                initMovList();
+            }
         }
     }
 }
