@@ -137,6 +137,25 @@ namespace cs_proj05_dicom2mov
             // It needs to happen here.
         }
 
+        protected void selectListDicom_ItemCheck(object sender, System.Windows.Forms.ItemCheckEventArgs e)
+        {
+            string selected = selectListDicom.SelectedItem.ToString();
+            dcm item = new dcm(sys.dicomsPath + selected.Substring(selected.LastIndexOf('|') + 1));
+
+            Details.Text = item.patientName + Environment.NewLine + convToDate(item.dateOfScan) + Environment.NewLine + convToTime(item.timeOfScan);
+                
+        }
+        private string convToTime(string input)
+        {
+            DateTime myDate = DateTime.ParseExact(input, "HHmmss", null);
+            return myDate.Hour + ":" + myDate.Minute + ":" + myDate.Second;
+        }
+        private string convToDate(string input)
+        {
+            DateTime myDate = DateTime.ParseExact(input, "yyyyMMdd", null);
+            return myDate.Month + "/" +  myDate.Day + "/" + myDate.Year;
+        }
+
         private void populateDrives_Click(object sender, EventArgs e)
         {
             initDriveList();

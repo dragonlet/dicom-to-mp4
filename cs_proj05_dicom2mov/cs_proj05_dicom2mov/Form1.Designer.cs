@@ -39,6 +39,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonConvert = new System.Windows.Forms.Button();
             this.dropdownProfiles = new System.Windows.Forms.ComboBox();
+            this.Details = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,22 +56,26 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.checklistMovieFiles, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowlayoutMoveButton, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.DriveList, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checklistMovieFiles, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowlayoutMoveButton, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.DriveList, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.selectListDicom, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Details, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.29512F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.704884F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.29652F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.99902F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.704457F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 447);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -78,9 +84,10 @@
             this.checklistMovieFiles.CheckOnClick = true;
             this.checklistMovieFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checklistMovieFiles.FormattingEnabled = true;
-            this.checklistMovieFiles.Location = new System.Drawing.Point(441, 3);
+            this.checklistMovieFiles.Location = new System.Drawing.Point(440, 3);
             this.checklistMovieFiles.Name = "checklistMovieFiles";
-            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 402);
+            this.tableLayoutPanel1.SetRowSpan(this.checklistMovieFiles, 2);
+            this.checklistMovieFiles.Size = new System.Drawing.Size(213, 401);
             this.checklistMovieFiles.TabIndex = 3;
             // 
             // flowlayoutMoveButton
@@ -88,9 +95,9 @@
             this.flowlayoutMoveButton.Controls.Add(this.buttonMoveTo);
             this.flowlayoutMoveButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowlayoutMoveButton.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowlayoutMoveButton.Location = new System.Drawing.Point(441, 411);
+            this.flowlayoutMoveButton.Location = new System.Drawing.Point(440, 410);
             this.flowlayoutMoveButton.Name = "flowlayoutMoveButton";
-            this.flowlayoutMoveButton.Size = new System.Drawing.Size(213, 33);
+            this.flowlayoutMoveButton.Size = new System.Drawing.Size(213, 34);
             this.flowlayoutMoveButton.TabIndex = 4;
             // 
             // buttonMoveTo
@@ -107,9 +114,9 @@
             // 
             this.flowLayoutPanel1.Controls.Add(this.populateDrives);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(660, 411);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(659, 410);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 33);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(214, 34);
             this.flowLayoutPanel1.TabIndex = 6;
             // 
             // populateDrives
@@ -127,36 +134,39 @@
             this.DriveList.CheckOnClick = true;
             this.DriveList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DriveList.FormattingEnabled = true;
-            this.DriveList.Location = new System.Drawing.Point(660, 3);
+            this.DriveList.Location = new System.Drawing.Point(659, 3);
             this.DriveList.Name = "DriveList";
-            this.DriveList.Size = new System.Drawing.Size(213, 402);
+            this.tableLayoutPanel1.SetRowSpan(this.DriveList, 2);
+            this.DriveList.Size = new System.Drawing.Size(214, 401);
             this.DriveList.TabIndex = 5;
             // 
             // selectListDicom
             // 
             this.selectListDicom.CheckOnClick = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.selectListDicom, 2);
             this.selectListDicom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectListDicom.FormattingEnabled = true;
             this.selectListDicom.Location = new System.Drawing.Point(3, 3);
             this.selectListDicom.Name = "selectListDicom";
-            this.selectListDicom.Size = new System.Drawing.Size(432, 402);
+            this.selectListDicom.Size = new System.Drawing.Size(431, 312);
             this.selectListDicom.TabIndex = 8;
+            this.selectListDicom.ItemCheck += selectListDicom_ItemCheck;
             // 
             // flowLayoutPanel2
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel2, 2);
             this.flowLayoutPanel2.Controls.Add(this.buttonConvert);
             this.flowLayoutPanel2.Controls.Add(this.dropdownProfiles);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 411);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 410);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(432, 33);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(431, 34);
             this.flowLayoutPanel2.TabIndex = 9;
             // 
             // buttonConvert
             // 
-            this.buttonConvert.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConvert.Location = new System.Drawing.Point(354, 3);
+            this.buttonConvert.Location = new System.Drawing.Point(353, 3);
             this.buttonConvert.Name = "buttonConvert";
             this.buttonConvert.Size = new System.Drawing.Size(75, 23);
             this.buttonConvert.TabIndex = 0;
@@ -171,10 +181,31 @@
             this.dropdownProfiles.Items.AddRange(new object[] {
             "preset1",
             "preset2"});
-            this.dropdownProfiles.Location = new System.Drawing.Point(135, 4);
+            this.dropdownProfiles.Location = new System.Drawing.Point(134, 4);
             this.dropdownProfiles.Name = "dropdownProfiles";
             this.dropdownProfiles.Size = new System.Drawing.Size(213, 21);
             this.dropdownProfiles.TabIndex = 1;
+            // 
+            // Details
+            // 
+            this.Details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Details.Location = new System.Drawing.Point(134, 321);
+            this.Details.Multiline = true;
+            this.Details.Name = "Details";
+            this.Details.ReadOnly = true;
+            this.Details.Size = new System.Drawing.Size(300, 83);
+            this.Details.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 321);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(125, 83);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "Name:\r\nDate:\r\nTime:";
             // 
             // menuStrip1
             // 
@@ -236,6 +267,7 @@
             this.Name = "Form1";
             this.Text = "Dicom To Movie";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.flowlayoutMoveButton.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -245,6 +277,8 @@
             this.PerformLayout();
 
         }
+
+        
 
         #endregion
 
@@ -265,6 +299,8 @@
         private System.Windows.Forms.ToolStripMenuItem fontSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
+        private System.Windows.Forms.TextBox Details;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }
