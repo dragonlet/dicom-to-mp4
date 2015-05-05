@@ -148,11 +148,15 @@ namespace cs_proj05_dicom2mov
         }
         private string convToTime(string input)
         {
+            if (input == null)
+                return "";
             DateTime myDate = DateTime.ParseExact(input, "HHmmss", null);
             return myDate.Hour + ":" + myDate.Minute + ":" + myDate.Second;
         }
         private string convToDate(string input)
         {
+            if (input == null)
+                return "";
             DateTime myDate = DateTime.ParseExact(input, "yyyyMMdd", null);
             return myDate.Month + "/" +  myDate.Day + "/" + myDate.Year;
         }
