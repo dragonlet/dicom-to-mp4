@@ -65,13 +65,13 @@ namespace cs_proj05_dicom2mov
 
         private void initProfileList()
         {
-            // dropdownProfiles.DataSource = ?? (this can be any type of list, array, dict; I am just unclear on what it gets data from. Presets?)
             string[] presetspre = sys.getFiles(sys.presetPath);
             string[] presets=new string[presetspre.Length];
             int i = 0;
             while (i < presetspre.Length)
             {
-                presets[i] = presetspre[i].Replace(".txt", "");//removes the .txt to make it better sight-wise.
+                // removes the .txt to make it better sight-wise.
+                presets[i] = presetspre[i].Replace(".txt", ""); 
                 i++;
             }
 
@@ -95,12 +95,20 @@ namespace cs_proj05_dicom2mov
 
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
+            // first check movie file is selected
+            if (checklistMovieFiles.SelectedItem == null)
+            {
+                popup.msg("Select a file to be moved");
+                return;
+            }
 
+            // next check if drive is selected to move the file to
             if (DriveList.SelectedItem == null)
             {
                 popup.msg("No drive selected for file move");
                 return;
             }
+
             if (!Directory.Exists(DriveList.SelectedItem.ToString() + "dicom2mov"))
                 Directory.CreateDirectory(DriveList.SelectedItem.ToString() + "dicom2mov");
             sys.copyFiles(sys.outPath + checklistMovieFiles.SelectedItem.ToString(), DriveList.SelectedItem.ToString() + @"dicom2mov\" + checklistMovieFiles.SelectedItem.ToString());
@@ -108,33 +116,30 @@ namespace cs_proj05_dicom2mov
 
         private void buttonConvert_Click(object sender, EventArgs e)
         {
+            // make sure they selected a file for conversion
+            if (selectListDicom.SelectedItem == null)
+            {
+                popup.msg("Select a file to be converted.");
+                return;
+            }
 
-            
-            
-
-            //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             string presetfile = sys.presetPath + dropdownProfiles.SelectedValue;
             IDictionary<string, string> presetsettings = sys.getPresets(presetfile+".txt");
             buttonConvert.Text = "Converting";
             buttonConvert.Enabled = false;
             Console.WriteLine(presetsettings.ToString());
-            
-            //ProgressWindow form2 = new ProgressWindow(selectListDicom.CheckedItems);
-            //form2.Show();
-            
+
             ProgressWindow form2 = new ProgressWindow(selectListDicom.CheckedItems);
             this.Enabled = false;
             foreach (object item in selectListDicom.CheckedItems)
             {
                 string toPass = item.ToString();    
-                form2.textbox(toPass.Substring(toPass.LastIndexOf('|') + 1));//filename
+                form2.textbox(toPass.Substring(toPass.LastIndexOf('|') + 1)); //filename
                 form2.progressbar(0);
 
                 form2.Show();
                 Application.DoEvents();
                 gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1), form2);
-
-                
             }
             form2.setProgress(100);
             form2.textbox("Done");
@@ -150,9 +155,6 @@ namespace cs_proj05_dicom2mov
             
 
             initMovList(); //update mov list
-            // all parameters will be set in gui.convert()
-            // or does it need to happen here because of the way form list selection stuff works?
-            // It needs to happen here.
         }
 
         protected void selectListDicom_ItemCheck(object sender, System.Windows.Forms.ItemCheckEventArgs e)
@@ -190,11 +192,24 @@ namespace cs_proj05_dicom2mov
 
         private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // increase font by
+            const int MODIFIER = 2;
+
+            foreach (Control c in this.Controls)
+            {
+                c.Font = new Font(c.Font.FontFamily, c.Font.Size + MODIFIER, c.Font.Style);
+            }
         }
 
         private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // decrease font by
+            const int MODIFIER = -2;
+ 
+            foreach (Control c in this.Controls)
+            {
+                c.Font = new Font(c.Font.FontFamily, c.Font.Size + MODIFIER, c.Font.Style);
+            }
         }
 
         private void Delete_Click(object sender, EventArgs e)

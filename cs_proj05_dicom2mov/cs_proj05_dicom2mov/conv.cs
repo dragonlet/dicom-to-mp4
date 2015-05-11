@@ -13,9 +13,7 @@ namespace cs_proj05_dicom2mov
 {
     class conv
     {
-       
-        
-             // extract all frames from a .dcm file
+        // extract all frames from a .dcm file
         public static void dcm_to_png(string dcmFile, string pngTempDir)
         {
             var image = new DicomImage(dcmFile);
@@ -28,12 +26,13 @@ namespace cs_proj05_dicom2mov
 
             for (int i = 0; i < frames; i++)
             {
-                // render each frame as a jpg
+                // render each frame as png
                 image.RenderImage(i).Save(pngTempDir + i.ToString(fmt) + ".png");
             }
-            
         }
 
+        // extract all frames from a .dcm file
+        // overloaded for use with progress bar
         public static void dcm_to_png(string dcmFile, string pngTempDir, ProgressWindow progform)
         {
             var image = new DicomImage(dcmFile);
@@ -46,15 +45,13 @@ namespace cs_proj05_dicom2mov
             
             for (int i = 0; i < frames; i++)
             {
-                // render each frame as a jpg
+                // render each frame as png
                 image.RenderImage(i).Save(pngTempDir + i.ToString(fmt) + ".png");
                 
                 int iout = (((i+1)*100)/frames);
                 
                 progform.setProgress(iout);
-                
             }
-
         }
 
         // convert directory of png images to video
@@ -64,25 +61,21 @@ namespace cs_proj05_dicom2mov
             var outS = new NReco.VideoConverter.ConvertSettings();
             outS.CustomInputArgs = "-framerate " + fps;
             outS.VideoFrameSize=sys.convsettings["size"];
-            //outS.VideoFrameRate = 10;
+
             /* Got NReco to work a few notes:
              * 1) %05d is the bash syntax for a number that's padded with 0's for 5 digits. i.e. 00349
              * 2) ffmpeg only looks for stills with the file number of 0~4. ie. imagename000.png. If it doesn't find it, it gives "file not found" error.
              * 3) NReco can be found in the folder.
              * conv.convert(); in program to call.
              */
-            //ffMpeg.ConvertProgress += (o, args) => {
-            //Console.WriteLine( String.Format("Progress: {0} / {1}\r\n", args.Processed, args.TotalDuration ));
-            //};
-
-
-            // just need to make this less hardcoded
-            
+                        
             ffMpeg.ConvertMedia(pngTempDir + @"%04d.png", "image2", outFile + @"."+sys.convsettings["format"], sys.convsettings["format"], outS);
-                              //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
+
             return false;
         }
 
+        // convert directory of png images to video
+        // overloaded for use with progress bar
         public static void png_to_mp4(string pngTempDir, string outFile, ProgressWindow progform ,string fps = "4")
         {
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
@@ -97,19 +90,19 @@ namespace cs_proj05_dicom2mov
              * conv.convert(); in program to call.
              */
 
-            
             ffMpeg.ConvertProgress += (o, args) => progHandler(o, args, progform);
             
-            // just need to make this less hardcoded
+            // actual conversion command
             ffMpeg.ConvertMedia(pngTempDir + @"%04d.png", "image2", outFile + @"." + sys.convsettings["format"], sys.convsettings["format"], outS);
-            //@"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\jpegs\akfg%05d.png", "image2", @"C:\Users\ajw\Documents\philips-15.5\cs_proj05_dicom2mov\appdata\mov\test.mp4", "mp4", outS);
+
             progform.setProgress(100);
             progform.Update();
         }
+
+        // progress bar handler to update percentages 
         static void progHandler(object o, ConvertProgressEventArgs args, ProgressWindow progform)
         {
             int prog= (int) (100 * (args.Processed.TotalSeconds / args.TotalDuration.TotalSeconds));
-            
 
             progform.BeginInvoke(new Action(() => {
                 //you might think this is a bug. No, this is intentional. Due to the way MS implemented events and progressbar class
@@ -124,10 +117,7 @@ namespace cs_proj05_dicom2mov
                 progform.Update();
                 }));
 
-
-
             Console.WriteLine(String.Format("--- args.Processed= " + args.Processed + "/" + args.Processed.TotalSeconds + ", args.TotalDuration= " + args.TotalDuration + "/" + args.TotalDuration.TotalSeconds.ToString() + ", ((processed*100)/totalduraction)=" + prog + " ---"));
-            
         }
 
         // conversion routine: one dcm = one scan
@@ -149,10 +139,11 @@ namespace cs_proj05_dicom2mov
             // cleanup temp files
             //Directory.Delete(tempScanDirectory, true);
         }
+
+        // conversion routine: one dcm = one scan
+        // overloaded for use with progress bar
         public static void convert(string dicomScan, ProgressWindow progform)
         {
-            // dicomScan will either be the dicomObj passed in or will grab info from global
-
             // check and create temp directory 
             string tempScanDirectory = sys.stillsPath + dicomScan + @"\";
             if (!Directory.Exists(tempScanDirectory))
@@ -161,10 +152,10 @@ namespace cs_proj05_dicom2mov
             }
 
             // uses all defined paths + name of the dicom directory
-            progform.progtext("Getting Dicom Stills.");
+            progform.progtext("Getting DICOM stills.");
             Application.DoEvents();
             dcm_to_png(sys.dicomsPath + dicomScan, tempScanDirectory, progform);
-            progform.progtext("Converting Stills to Movie file.");
+            progform.progtext("Converting stills to movie file.");
             Application.DoEvents();
             png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\", ""), progform);
 
