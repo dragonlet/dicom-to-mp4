@@ -98,14 +98,14 @@ namespace cs_proj05_dicom2mov
             // first check movie file is selected
             if (checklistMovieFiles.SelectedItem == null)
             {
-                popup.msg("Select a file to be moved");
+                popup.msg("Select a file to be moved.");
                 return;
             }
 
             // next check if drive is selected to move the file to
             if (DriveList.SelectedItem == null)
             {
-                popup.msg("No drive selected for file move");
+                popup.msg("No drive selected for file move.");
                 return;
             }
 
@@ -214,6 +214,13 @@ namespace cs_proj05_dicom2mov
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            // check if file is selected for deletion
+            if (checklistMovieFiles.SelectedItem == null)
+            {
+                popup.msg("Select a file to be deleted.");
+                return;
+            }
+
             if (MessageBox.Show("Are you sure you want to delete the checked files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (object item in checklistMovieFiles.CheckedItems)
