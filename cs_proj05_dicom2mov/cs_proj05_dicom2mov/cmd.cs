@@ -78,13 +78,11 @@ namespace cs_proj05_dicom2mov
 
                     if(!cmdparams.ContainsKey("files")||cmdparams["files"].Count<=0){
                         return "No filenames provided";
-                        break;
                     }
 
                     if (!cmdparams.ContainsKey("preset") || cmdparams["preset"].Count != 1)
                     {
                         return "No presets selected";
-                        break;
                     }
 
                     sys.getPresets(sys.presetPath + cmdparams["preset"][0]);
