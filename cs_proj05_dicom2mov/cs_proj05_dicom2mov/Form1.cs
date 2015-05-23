@@ -96,21 +96,30 @@ namespace cs_proj05_dicom2mov
         private void buttonMoveTo_Click(object sender, EventArgs e)
         {
 
-            if (DriveList.SelectedItem == null)
+            if (DriveList.SelectedItem == null )
             {
                 popup.msg("No drive selected for file move");
                 return;
             }
             if (!Directory.Exists(DriveList.SelectedItem.ToString() + "dicom2mov"))
                 Directory.CreateDirectory(DriveList.SelectedItem.ToString() + "dicom2mov");
-            sys.copyFiles(sys.outPath + checklistMovieFiles.SelectedItem.ToString(), DriveList.SelectedItem.ToString() + @"dicom2mov\" + checklistMovieFiles.SelectedItem.ToString());
+
+            foreach(object movfile in checklistMovieFiles.CheckedItems) {
+                sys.copyFiles(sys.outPath + movfile.ToString(), DriveList.SelectedItem.ToString() + @"dicom2mov\" + movfile.ToString());
+                
+            }
+            
         }
 
         private void buttonConvert_Click(object sender, EventArgs e)
         {
 
-            
-            
+
+            if (selectListDicom.CheckedItems == null || selectListDicom.CheckedItems.Count<=0)
+            {
+                popup.msg("No dicom files selected.");
+                return;
+            }
 
             //gui.convert is not made yet. Assuming it is gui.convert(path[], presets) where path[] is the array of items and presets is the profile in dropdownProfiles
             string presetfile = sys.presetPath + dropdownProfiles.SelectedValue;
@@ -126,13 +135,16 @@ namespace cs_proj05_dicom2mov
             this.Enabled = false;
             foreach (object item in selectListDicom.CheckedItems)
             {
+                
                 string toPass = item.ToString();    
                 form2.textbox(toPass.Substring(toPass.LastIndexOf('|') + 1));//filename
                 form2.progressbar(0);
 
                 form2.Show();
                 Application.DoEvents();
-                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1), form2);
+                dcm temp = new dcm(sys.dicomsPath + toPass.Substring(toPass.LastIndexOf('|') + 1));
+                
+                gui.convert(toPass.Substring(toPass.LastIndexOf('|') +1), form2, temp.frameRate);
 
                 
             }
@@ -141,7 +153,7 @@ namespace cs_proj05_dicom2mov
             form2.progtext("Done");
             form2.Update();
             Application.DoEvents();
-            Thread.Sleep(2500);
+            Thread.Sleep(2000);
             form2.Close();
             this.Enabled = true;
             this.Focus();
@@ -160,7 +172,7 @@ namespace cs_proj05_dicom2mov
             string selected = selectListDicom.SelectedItem.ToString();
             dcm item = new dcm(sys.dicomsPath + selected.Substring(selected.LastIndexOf('|') + 1));
 
-            Details.Text = item.patientName + Environment.NewLine + convToDate(item.dateOfScan) + Environment.NewLine + convToTime(item.timeOfScan);
+            Details.Text = item.patientName + Environment.NewLine + convToDate(item.dateOfScan) + Environment.NewLine + convToTime(item.timeOfScan) + Environment.NewLine  + item.frameNum;
                 
         }
         private string convToTime(string input)
@@ -199,6 +211,11 @@ namespace cs_proj05_dicom2mov
 
         private void Delete_Click(object sender, EventArgs e)
         {
+            if (checklistMovieFiles.CheckedItems == null || checklistMovieFiles.CheckedItems.Count <= 0)
+            {
+                popup.msg("No files selected for Deletion");
+                return;
+            }
             if (MessageBox.Show("Are you sure you want to delete the checked files?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 foreach (object item in checklistMovieFiles.CheckedItems)

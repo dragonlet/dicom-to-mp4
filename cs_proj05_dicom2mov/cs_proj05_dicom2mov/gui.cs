@@ -25,7 +25,7 @@ namespace cs_proj05_dicom2mov
 
         // gui.convert() should deal with looping through multiple dicom datasets
         // each directory of .dcm files should be a different session or different scan
-        public static bool convert(string filename)
+        public static bool convert(string filename, string framerate = "4")
         {
             // create the dicomObj somewhere
             // global or pass it to conv.convert() function?
@@ -35,12 +35,12 @@ namespace cs_proj05_dicom2mov
             // make sure to put IM_0020 into your appdata\roaming\dicom2mov\dicoms folder
             //ProgressWindow form2 = new ProgressWindow();
             //form2.Show();
-            conv.convert(filename);
+            conv.convert(filename, framerate);
 
             //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
             return true;
         }
-        public static bool convert(string filename, ProgressWindow progform)
+        public static bool convert(string filename, ProgressWindow progform, string framerate = "4")
         {
             // create the dicomObj somewhere
             // global or pass it to conv.convert() function?
@@ -50,7 +50,7 @@ namespace cs_proj05_dicom2mov
             // make sure to put IM_0020 into your appdata\roaming\dicom2mov\dicoms folder
             //ProgressWindow form2 = new ProgressWindow();
             //form2.Show();
-            conv.convert(filename, progform);
+            conv.convert(filename, progform, framerate);
 
             //popup.msg("go make the global dicomObj!\n\nfile: \""+selectedDir+"\" not converted, but IM_0020 was!");
             return true;

@@ -26,7 +26,8 @@ namespace cs_proj05_dicom2mov
         public string dicomFilePath;
         public string dicomFileName;
         public string dateOfScan;
-        public string timeOfScan; 
+        public string timeOfScan;
+ 
 
         public string frameRate;
         public int frameNum;

@@ -207,7 +207,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(125, 83);
             this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "Name:\r\nDate:\r\nTime:";
+            this.textBox1.Text = "Name:\r\nDate:\r\nTime:\r\nFrames:";
             // 
             // menuStrip1
             // 
