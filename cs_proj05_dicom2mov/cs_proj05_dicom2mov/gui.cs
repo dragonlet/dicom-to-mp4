@@ -25,14 +25,16 @@ namespace cs_proj05_dicom2mov
 
         // gui.convert() should deal with looping through multiple dicom datasets
         // each directory of .dcm files should be a different session or different scan
-        public static bool convert(string filename)
+        public static bool convert(string filename, string framerate = "4")
         {
             conv.convert(filename);
+
             return true;
         }
-        public static bool convert(string filename, ProgressWindow progform)
+        public static bool convert(string filename, ProgressWindow progform, string framerate = "4")
         {
-            conv.convert(filename, progform);
+            conv.convert(filename, progform, framerate);
+
             return true;
         }
     }

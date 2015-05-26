@@ -57,9 +57,11 @@ namespace cs_proj05_dicom2mov
         // convert directory of png images to video
         public static Boolean png_to_mp4(string pngTempDir, string outFile, string fps="4")
         {
+
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
             outS.CustomInputArgs = "-framerate " + fps;
+            outS.CustomInputArgs = "-y " + outS.CustomInputArgs;
             outS.VideoFrameSize=sys.convsettings["size"];
 
             /* Got NReco to work a few notes:
@@ -78,10 +80,14 @@ namespace cs_proj05_dicom2mov
         // overloaded for use with progress bar
         public static void png_to_mp4(string pngTempDir, string outFile, ProgressWindow progform ,string fps = "4")
         {
+
+
             var ffMpeg = new NReco.VideoConverter.FFMpegConverter();
             var outS = new NReco.VideoConverter.ConvertSettings();
             outS.CustomInputArgs = "-framerate " + fps;
+            outS.CustomInputArgs = "-y " + outS.CustomInputArgs;
             outS.VideoFrameSize = sys.convsettings["size"];
+            
             //outS.VideoFrameRate = 10;
             /* Got NReco to work a few notes:
              * 1) %05d is the bash syntax for a number that's padded with 0's for 5 digits. i.e. 00349
@@ -121,7 +127,7 @@ namespace cs_proj05_dicom2mov
         }
 
         // conversion routine: one dcm = one scan
-        public static void convert(string dicomScan)
+        public static void convert(string dicomScan, string framerate = "4")
         {
             // dicomScan will either be the dicomObj passed in or will grab info from global
 
@@ -134,15 +140,13 @@ namespace cs_proj05_dicom2mov
 
             // uses all defined paths + name of the dicom directory
             dcm_to_png(sys.dicomsPath + dicomScan, tempScanDirectory);
-            png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""));
+            png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\",""), framerate.ToString());
 
             // cleanup temp files
             //Directory.Delete(tempScanDirectory, true);
         }
 
-        // conversion routine: one dcm = one scan
-        // overloaded for use with progress bar
-        public static void convert(string dicomScan, ProgressWindow progform)
+        public static void convert(string dicomScan, ProgressWindow progform, string framerate = "4")
         {
             // check and create temp directory 
             string tempScanDirectory = sys.stillsPath + dicomScan + @"\";
@@ -157,7 +161,7 @@ namespace cs_proj05_dicom2mov
             dcm_to_png(sys.dicomsPath + dicomScan, tempScanDirectory, progform);
             progform.progtext("Converting stills to movie file.");
             Application.DoEvents();
-            png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\", ""), progform);
+            png_to_mp4(tempScanDirectory, sys.outPath + dicomScan.Replace(@"\", ""), progform, framerate.ToString());
 
             // cleanup temp files
             //Directory.Delete(tempScanDirectory, true);

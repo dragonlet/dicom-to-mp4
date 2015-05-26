@@ -1,0 +1,3 @@
+#-i infile -s 864x486 -f avi
+size=1280x720
+format=mp4
